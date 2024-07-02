@@ -2,6 +2,7 @@ import MicrosoftIcon from '../../assets/icons/microsoft-icon.svg'
 import GoogleIcon from '../../assets/icons/google-icon.svg'
 import GithubIcon from '../../assets/icons/github-icon.svg'
 import Divider from '@mui/material/Divider'
+import { useNavigate } from 'react-router-dom'
 
 interface LoginButtonProps {
     icon: string
@@ -9,6 +10,8 @@ interface LoginButtonProps {
 }
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const LoginButton = ({ icon, text }: LoginButtonProps) => {
         return (
             <div
@@ -135,7 +138,10 @@ const Login = () => {
                     fontSize: 14,
                     color: '#FFFFFF',
                 }}
-                onClick={() => console.log('SAML SSO button clicked')}
+                onClick={() => {
+                    console.log('SAML SSO button clicked')
+                    navigate('/saml')
+                }}
             >
                 SAML SSO
             </div>
