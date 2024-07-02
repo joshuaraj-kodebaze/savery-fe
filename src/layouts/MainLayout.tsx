@@ -5,6 +5,7 @@ const MainLayout = () => {
     return (
         <>
             <TopBar />
+            {/* <div style={{ marginTop: 50 }}> */}
             <div style={{ marginTop: 50, marginLeft: 200 }}>
                 <Outlet />
             </div>
