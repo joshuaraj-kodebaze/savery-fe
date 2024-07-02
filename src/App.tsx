@@ -1,9 +1,13 @@
 // import './App.css'
 import { Routes, Route } from 'react-router-dom';
-import Projects from './pages/projects/Projects';
-import Login from './pages/auth/Login';
-import Saml from './pages/auth/Saml';
-import MainLayout from './layouts/MainLayout';
+
+// Import layouts
+import MainLayout from 'layouts/main-layout/MainLayout';
+
+// Import pages
+import Projects from 'pages/projects/Projects';
+import Login from 'pages/auth/Login';
+import Saml from 'pages/auth/Saml';
 
 function App() {
   return (
