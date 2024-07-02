@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 // Import layouts
-import MainLayout from 'layouts/main-layout/MainLayout';
+import MainLayout from 'layouts/main-layout/main-layout';
 
 // Import pages
 import Projects from 'pages/projects/Projects';

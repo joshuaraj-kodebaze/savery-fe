@@ -4,13 +4,16 @@ import { Outlet } from 'react-router-dom';
 // Import features
 import TopBar from 'features/top-bar/TopBar';
 
+// Import components
+import { LayoutContainer } from './main-layout.styles';
+
 const MainLayout = () => {
   return (
     <>
       <TopBar />
-      <div style={{ marginTop: 50, marginLeft: 200 }}>
+      <LayoutContainer>
         <Outlet />
-      </div>
+      </LayoutContainer>
     </>
   );
 };
