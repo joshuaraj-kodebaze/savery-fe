@@ -10,6 +10,7 @@ import Login from 'pages/login/login';
 import Saml from 'pages/saml/saml';
 import Policy from 'pages/policy/policy';
 import Terms from 'pages/terms/terms';
+import General from 'pages/general/general';
 
 // Import utils
 import { ROUTES } from 'utils/constants';
@@ -23,6 +24,11 @@ function App() {
         <Route index path={ROUTES.user.SAML} element={<Saml />} />
         <Route index path={ROUTES.user.POLICY} element={<Policy />} />
         <Route index path={ROUTES.user.TERMS} element={<Terms />} />
+        <Route
+          index
+          path={ROUTES.settings.GENERAL}
+          element={<General />}
+        />
       </Route>
     </Routes>
   );

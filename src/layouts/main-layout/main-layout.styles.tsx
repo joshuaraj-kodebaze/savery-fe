@@ -8,5 +8,6 @@ export const LayoutContainer = styled('div')(({ theme }) => ({
   padding: '24px 24px 24px 40px',
   [theme.breakpoints.down('sm')]: {
     marginLeft: 0,
+    padding: '24px 24px 24px 25px', //eddie - may remove, reducing left padding for mobile
   },
 }));
