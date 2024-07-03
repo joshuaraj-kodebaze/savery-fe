@@ -1,5 +1,5 @@
 // Import libraries
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import {
   faAngleLeft,
   faAngleRight,
@@ -22,13 +22,15 @@ const UserProps = {
 };
 
 const TopBar = () => {
+  const theme = useTheme();
+
   return (
     <HeaderContainer>
       <UserContainer>
         <Box
           sx={{
             display: 'flex',
-            gap: '10px',
+            gap: '8px',
             alignItems: 'center',
           }}
         >
@@ -36,29 +38,31 @@ const TopBar = () => {
           <Typography
             sx={{
               fontSize: 14,
-              marginTop: '1px',
             }}
           >
             {UserProps.name}
           </Typography>
         </Box>
-        <FontAwesomeIcon icon={faAngleDown} />
+        <FontAwesomeIcon
+          icon={faAngleDown}
+          style={{ color: theme.palette.text.primary }}
+        />
       </UserContainer>
       <ToolBarContainer>
         <Box
           component={'div'}
           sx={{
             display: 'flex',
-            gap: '20px',
+            gap: '24px',
           }}
         >
           <FontAwesomeIcon
             icon={faAngleLeft}
-            style={{ color: '#ddd' }}
+            style={{ color: theme.palette.text.disabled }}
           />
           <FontAwesomeIcon
             icon={faAngleRight}
-            style={{ color: '#ddd' }}
+            style={{ color: theme.palette.text.disabled }}
           />
         </Box>
         <Logo />

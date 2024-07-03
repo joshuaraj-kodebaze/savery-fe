@@ -6,7 +6,7 @@ import { ROUTES } from "utils/constants";
 
 export const SIDEBAR_SECTIONS = {
     MAIN: 'main',
-    SETTINGS: 'Settings',
+    SETTINGS: 'settings',
     EXTERNAL: 'external'
 }
 

@@ -6,10 +6,10 @@ import MainLayout from 'layouts/main-layout/main-layout';
 
 // Import pages
 import Projects from 'pages/projects/projects';
-import Login from 'pages/auth/Login';
-import Saml from 'pages/auth/Saml';
-import Policy from 'pages/auth/Policy';
-import Terms from 'pages/auth/Terms';
+import Login from 'pages/login/login';
+import Saml from 'pages/saml/saml';
+import Policy from 'pages/policy/policy';
+import Terms from 'pages/terms/terms';
 
 // Import utils
 import { ROUTES } from 'utils/constants';

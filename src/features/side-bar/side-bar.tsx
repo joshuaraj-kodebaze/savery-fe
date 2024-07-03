@@ -10,6 +10,7 @@ import {
   SideBarContainer,
   SectionTitle,
   NavLink,
+  SideBarInnerContainer,
 } from './side-bar.styles';
 
 // Import utils
@@ -35,20 +36,13 @@ const SideBar = () => {
       }}
       open
     >
-      <Box
-        component={'div'}
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: 'calc(100vh - 80px)',
-        }}
-      >
+      <SideBarInnerContainer>
         <Box
           component={'div'}
           sx={{
             display: 'flex',
             flexDirection: 'column',
+            gap: '24px',
           }}
         >
           {Object.entries(SIDEBAR_NAV_ITEMS).map(
@@ -82,19 +76,28 @@ const SideBar = () => {
                 >
                   <Divider />
                   <SectionTitle>{key}</SectionTitle>
-                  {value.map((item, i) => (
-                    <NavLink
-                      key={`nav-item-${key}-${i}`}
-                      href={item.path}
-                      underline="none"
-                      disabled={item.isDisabled}
-                      isactivelink={
-                        activeLink.includes(item.path) ? 1 : 0
-                      }
-                    >
-                      {item.title}
-                    </NavLink>
-                  ))}
+                  <Box
+                    component={'div'}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '24px',
+                    }}
+                  >
+                    {value.map((item, i) => (
+                      <NavLink
+                        key={`nav-item-${key}-${i}`}
+                        href={item.path}
+                        underline="none"
+                        disabled={item.isDisabled}
+                        isactivelink={
+                          activeLink.includes(item.path) ? 1 : 0
+                        }
+                      >
+                        {item.title}
+                      </NavLink>
+                    ))}
+                  </Box>
                 </Box>
               );
             }
@@ -105,6 +108,7 @@ const SideBar = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
+            gap: '16px',
           }}
         >
           {Object.entries(SIDEBAR_NAV_ITEMS).map(([key, value]) => {
@@ -132,7 +136,7 @@ const SideBar = () => {
             }
           })}
         </Box>
-      </Box>
+      </SideBarInnerContainer>
     </SideBarContainer>
   );
 };
