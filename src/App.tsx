@@ -19,11 +19,11 @@ function App() {
     <Routes>
       <Route element={<MainLayout />}>
         <Route index path="/" element={<Projects />} />
-        <Route index path={ROUTES.user.LOGIN} element={<Login />} />
-        <Route index path={ROUTES.user.SAML} element={<Saml />} />
-        <Route index path={ROUTES.user.POLICY} element={<Policy />} />
-        <Route index path={ROUTES.user.TERMS} element={<Terms />} />
       </Route>
+      <Route index path={ROUTES.user.LOGIN} element={<Login />} />
+      <Route index path={ROUTES.user.SAML} element={<Saml />} />
+      <Route index path={ROUTES.user.POLICY} element={<Policy />} />
+      <Route index path={ROUTES.user.TERMS} element={<Terms />} />
     </Routes>
   );
 }

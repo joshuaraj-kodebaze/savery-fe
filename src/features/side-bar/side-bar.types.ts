@@ -1,3 +1,8 @@
+// Import libraries
+import {
+    type LinkProps,
+} from '@mui/material';
+
 export type TSidebarNavItems = {
     title: string;
     path: string;
@@ -6,3 +11,8 @@ export type TSidebarNavItems = {
     isDisabled: boolean;
     isExternalLink?: boolean;
 }[];
+
+export type TNavLink = {
+    isactivelink?: number;
+    disabled?: boolean;
+} & LinkProps;

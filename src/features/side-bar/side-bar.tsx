@@ -1,9 +1,16 @@
 // Import libraries
-import { Box, Link, Divider, Typography } from '@mui/material';
-// import { Link } from 'react-router-dom';
+import { Box, Divider } from '@mui/material';
+import { faArrowUpRight } from '@fortawesome/pro-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // Import components
-import { SideBarContainer } from './side-bar.styles';
+import {
+  SideBarContainer,
+  SectionTitle,
+  NavLink,
+} from './side-bar.styles';
 
 // Import utils
 import {
@@ -12,6 +19,14 @@ import {
 } from './side-bar.utils';
 
 const SideBar = () => {
+  const location = useLocation();
+
+  const [activeLink, setActiveLink] = useState<string>('');
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
+
   return (
     <SideBarContainer
       variant="permanent"
@@ -36,57 +51,54 @@ const SideBar = () => {
             flexDirection: 'column',
           }}
         >
-          {Object.entries(SIDEBAR_NAV_ITEMS).map(([key, value]) => {
-            if (key === SIDEBAR_SECTIONS.EXTERNAL) return;
+          {Object.entries(SIDEBAR_NAV_ITEMS).map(
+            ([key, value], idx) => {
+              if (key === SIDEBAR_SECTIONS.EXTERNAL) return;
 
-            if (key === SIDEBAR_SECTIONS.MAIN) {
-              return value.map((item, i) => (
-                <Link
-                  key={`side-bar-nav-item-${i}`}
-                  href={item.path}
-                  sx={{
-                    padding: '0px 25px',
-                    marginBottom: '20px',
-                    color: 'black',
-                  }}
-                  underline="none"
-                >
-                  {item.title}
-                </Link>
-              ));
-            }
-
-            return (
-              <>
-                <Divider />
-                <Typography
-                  sx={{
-                    textTransform: 'capitalize',
-                    padding: '0 15px',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    margin: '15px 0 25px',
-                  }}
-                >
-                  {key}
-                </Typography>
-                {value.map((item, i) => (
-                  <Link
-                    key={`side-bar-nav-item-${i}`}
+              if (key === SIDEBAR_SECTIONS.MAIN) {
+                return value.map((item, i) => (
+                  <NavLink
+                    key={`nav-item-${key}-${i}`}
                     href={item.path}
-                    sx={{
-                      padding: '0px 25px',
-                      marginBottom: '20px',
-                      color: 'black',
-                    }}
                     underline="none"
+                    disabled={item.isDisabled}
+                    isactivelink={
+                      activeLink.includes(item.path) ? 1 : 0
+                    }
                   >
                     {item.title}
-                  </Link>
-                ))}
-              </>
-            );
-          })}
+                  </NavLink>
+                ));
+              }
+
+              return (
+                <Box
+                  key={`nav-section-${idx}`}
+                  component={'div'}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <Divider />
+                  <SectionTitle>{key}</SectionTitle>
+                  {value.map((item, i) => (
+                    <NavLink
+                      key={`nav-item-${key}-${i}`}
+                      href={item.path}
+                      underline="none"
+                      disabled={item.isDisabled}
+                      isactivelink={
+                        activeLink.includes(item.path) ? 1 : 0
+                      }
+                    >
+                      {item.title}
+                    </NavLink>
+                  ))}
+                </Box>
+              );
+            }
+          )}
         </Box>
         <Box
           component={'div'}
@@ -98,18 +110,24 @@ const SideBar = () => {
           {Object.entries(SIDEBAR_NAV_ITEMS).map(([key, value]) => {
             if (key === SIDEBAR_SECTIONS.EXTERNAL) {
               return value.map((item, i) => (
-                <Link
-                  key={`side-bar-nav-item-${i}`}
+                <NavLink
+                  key={`nav-item-${key}-${i}`}
                   href={item.path}
-                  sx={{
-                    padding: '0px 25px',
-                    marginBottom: '20px',
-                    color: 'black',
-                  }}
                   underline="none"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}
+                  disabled={item.isDisabled}
+                  target="_blank"
                 >
                   {item.title}
-                </Link>
+                  <FontAwesomeIcon
+                    icon={faArrowUpRight}
+                    style={{ fontSize: 10 }}
+                  />
+                </NavLink>
               ));
             }
           })}
