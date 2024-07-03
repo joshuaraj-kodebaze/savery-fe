@@ -16,7 +16,7 @@ export default {
     },
     text: {
         primary: darkBlue,
-        secondary: white,
+        secondary: '#767676',
         disabled: mediumGray
     },
     divider: slightDarkGray,

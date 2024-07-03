@@ -29,13 +29,7 @@ const SideBar = () => {
   }, [location]);
 
   return (
-    <SideBarContainer
-      variant="permanent"
-      sx={{
-        display: { xs: 'none', sm: 'block' },
-      }}
-      open
-    >
+    <SideBarContainer variant="permanent" open>
       <SideBarInnerContainer>
         <Box
           component={'div'}
