@@ -3,7 +3,7 @@ import GoogleIcon from '../../assets/icons/google-icon.svg';
 import GithubIcon from '../../assets/icons/github-icon.svg';
 import Divider from '@mui/material/Divider';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 
 // Import components
 import {
@@ -21,6 +21,7 @@ interface LoginButtonProps {
 }
 
 const Login = () => {
+  const theme = useTheme();
   const navigate = useNavigate();
 
   const LoginButton = ({ icon, text }: LoginButtonProps) => {
@@ -39,7 +40,6 @@ const Login = () => {
         sx={{
           fontSize: 24,
           fontWeight: 600,
-          fontFamily: 'Titillium Web',
           marginBottom: 4,
         }}
       >
@@ -58,7 +58,10 @@ const Login = () => {
           href="/terms"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: '#152023', textDecoration: 'none' }}
+          style={{
+            color: theme.palette.text.primary,
+            textDecoration: 'none',
+          }}
         >
           {' '}
           Terms of Service{' '}
@@ -68,7 +71,10 @@ const Login = () => {
           href="/policy"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: '#152023', textDecoration: 'none' }}
+          style={{
+            color: theme.palette.text.primary,
+            textDecoration: 'none',
+          }}
         >
           {' '}
           Privacy Policy{' '}

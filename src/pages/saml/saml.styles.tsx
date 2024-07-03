@@ -9,10 +9,9 @@ export const Container = styled('div')(() => ({
   marginLeft: 0,
   flexDirection: 'column',
   gap: 12,
-  fontFamily: 'Titillium Web',
 }));
 
-export const ContactContainer = styled('div')(() => ({
+export const ContactContainer = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   gap: 10,
@@ -22,11 +21,11 @@ export const ContactContainer = styled('div')(() => ({
   fontWeight: 400,
   fontSize: 12,
   lineHeight: '18px',
-  color: '#767676',
+  color: theme.palette.text.secondary,
   textAlign: 'center',
 }));
 
-export const SamlButtonContainer = styled('div')(() => ({
+export const SamlButtonContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   textAlign: 'center',
@@ -35,10 +34,10 @@ export const SamlButtonContainer = styled('div')(() => ({
   width: 327,
   marginTop: 15,
   height: 40,
-  backgroundColor: '#152023',
+  backgroundColor: theme.palette.text.primary,
   borderRadius: 100,
   fontWeight: 600,
   fontSize: 14,
-  color: '#FFFFFF',
+  color: theme.palette.common.white,
   cursor: 'pointer',
 }));

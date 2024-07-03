@@ -9,7 +9,6 @@ const Terms = () => {
         marginLeft: -200,
         flexDirection: 'column',
         gap: 12,
-        fontFamily: 'Titillium Web',
       }}
     >
       <div

@@ -14,7 +14,6 @@ const Saml = () => {
         sx={{
           fontSize: 24,
           fontWeight: 600,
-          fontFamily: 'Titillium Web',
           marginBottom: 4,
         }}
       >
