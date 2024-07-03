@@ -12,6 +12,7 @@ import Policy from 'pages/policy/policy';
 import Terms from 'pages/terms/terms';
 import General from 'pages/general/general';
 import ErrorPage from 'pages/error-page/error-page';
+import Recent from 'pages/recent/recent';
 
 // Import utils
 import { ROUTES } from 'utils/constants';
@@ -22,17 +23,17 @@ function App() {
       <Route path="404" element={<ErrorPage />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
       <Route element={<MainLayout />}>
-        <Route index path="/" element={<Projects />} />
+        <Route path="/" element={<Projects />} />
+        <Route path={ROUTES.settings.GENERAL} element={<General />} />
         <Route
-          index
-          path={ROUTES.settings.GENERAL}
-          element={<General />}
+          path={ROUTES.projects.RECENT_PROJECTS}
+          element={<Recent />}
         />
       </Route>
-      <Route index path={ROUTES.user.LOGIN} element={<Login />} />
-      <Route index path={ROUTES.user.SAML} element={<Saml />} />
-      <Route index path={ROUTES.user.POLICY} element={<Policy />} />
-      <Route index path={ROUTES.user.TERMS} element={<Terms />} />
+      <Route path={ROUTES.user.LOGIN} element={<Login />} />
+      <Route path={ROUTES.user.SAML} element={<Saml />} />
+      <Route path={ROUTES.user.POLICY} element={<Policy />} />
+      <Route path={ROUTES.user.TERMS} element={<Terms />} />
     </Routes>
   );
 }

@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 export const SearchFieldInput = styled(TextField)<TextFieldProps>(
-  ({ theme }) => ({
+  ({ theme, value }) => ({
     width: 298,
     height: 32,
     backgroundColor: theme.palette.background.paper,
@@ -20,11 +20,14 @@ export const SearchFieldInput = styled(TextField)<TextFieldProps>(
         borderRadius: 24,
       },
       '& input': {
-        padding: '7px 16px 7px 0',
+        padding: value ? '7px 7px 7px 0' : '7px 16px 7px 0',
         fontSize: 12,
         '&::placeholder': {
           color: theme.palette.text.secondary,
         },
+      },
+      '&.Mui-focused fieldset': {
+        border: `1px solid #A3A3A3`,
       },
     },
     [theme.breakpoints.down('sm')]: {

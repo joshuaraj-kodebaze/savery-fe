@@ -6,6 +6,7 @@ const mediumGray = '#D1D1D1';
 const midGray = '#fbfbfb';
 const slightDarkGray = '#EBEBEB';
 const purple = '#CC00FF';
+const darkPurple = '#B505E1';
 
 export default {
     common: {
@@ -14,6 +15,7 @@ export default {
     },
     primary: {
         main: purple,
+        dark: darkPurple
     },
     text: {
         primary: darkBlue,
@@ -25,4 +27,12 @@ export default {
         paper: white,
         default: midGray,
     },
+    action: {
+        active: darkPurple,
+        hover: darkPurple,
+        selected: darkPurple,
+        disabled: white,
+        disabledBackground: mediumGray,
+        focus: darkPurple
+    }
 };

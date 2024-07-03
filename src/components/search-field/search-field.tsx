@@ -4,7 +4,10 @@ import {
   type TextFieldProps,
   useTheme,
 } from '@mui/material';
-import { faSearch } from '@fortawesome/pro-regular-svg-icons';
+import {
+  faSearch,
+  faXmark,
+} from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Import components
@@ -12,6 +15,7 @@ import { SearchFieldInput } from './search-field.styles';
 
 const SearchField = (props: Omit<TextFieldProps, 'InputProps'>) => {
   const theme = useTheme();
+  const { value } = props;
 
   return (
     <SearchFieldInput
@@ -27,6 +31,19 @@ const SearchField = (props: Omit<TextFieldProps, 'InputProps'>) => {
               }}
             />
           </InputAdornment>
+        ),
+        endAdornment: value ? (
+          <InputAdornment position="end">
+            <FontAwesomeIcon
+              icon={faXmark}
+              style={{
+                fontSize: 12,
+                color: theme.palette.text.secondary,
+              }}
+            />
+          </InputAdornment>
+        ) : (
+          <></>
         ),
       }}
       {...props}

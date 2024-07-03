@@ -5,7 +5,11 @@ import { type ButtonProps } from '@mui/material';
 import { StyledButton } from './button.styles';
 
 const Button = (props: ButtonProps) => {
-  return <StyledButton {...props}>{props.children}</StyledButton>;
+  return (
+    <StyledButton disableTouchRipple {...props}>
+      {props.children}
+    </StyledButton>
+  );
 };
 
 export default Button;
