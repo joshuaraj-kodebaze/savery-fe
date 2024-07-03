@@ -32,7 +32,7 @@ const SideBar = () => {
     <SideBarContainer
       variant="permanent"
       sx={{
-        display: { xs: 'none', sm: 'none', md: 'block' },
+        display: { xs: 'none', sm: 'block' },
       }}
       open
     >

@@ -23,7 +23,7 @@ const UserProps = {
 
 const TopBar = () => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   return (
     <HeaderContainer>
