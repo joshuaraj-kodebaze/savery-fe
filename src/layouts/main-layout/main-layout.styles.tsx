@@ -5,7 +5,7 @@ export const LayoutContainer = styled('div')(({ theme }) => ({
   height: 'calc(100vh - 110px)',
 
   marginTop: 50,
-  marginLeft: 200,
+  marginLeft: 230,
 
   padding: '30px 25px 30px 45px',
 
