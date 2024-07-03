@@ -28,7 +28,7 @@ export const SearchFieldInput = styled(TextField)<TextFieldProps>(
       },
     },
     [theme.breakpoints.down('sm')]: {
-      width: '100%',
+      width: 'calc(100% - 120px)',
     },
   })
 );

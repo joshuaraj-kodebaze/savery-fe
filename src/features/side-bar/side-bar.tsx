@@ -50,9 +50,7 @@ const SideBar = () => {
                     href={item.path}
                     underline="none"
                     disabled={item.isDisabled}
-                    isactivelink={
-                      activeLink.includes(item.path) ? 1 : 0
-                    }
+                    isactivelink={activeLink === item.path ? 1 : 0}
                   >
                     {item.title}
                   </NavLink>
@@ -85,7 +83,7 @@ const SideBar = () => {
                         underline="none"
                         disabled={item.isDisabled}
                         isactivelink={
-                          activeLink.includes(item.path) ? 1 : 0
+                          activeLink === item.path ? 1 : 0
                         }
                       >
                         {item.title}
