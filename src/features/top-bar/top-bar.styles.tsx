@@ -27,6 +27,10 @@ export const UserContainer = styled(Box)<BoxProps>(({ theme }) => ({
   justifyContent: 'space-between',
   padding: '14px 24px',
   backgroundColor: theme.palette.background.default,
+  [theme.breakpoints.down('md')]: {
+    width: '20%',
+    gap: 8,
+  },
 }));
 
 export const ToolBarContainer = styled(Box)<BoxProps>(
@@ -37,6 +41,10 @@ export const ToolBarContainer = styled(Box)<BoxProps>(
     alignItems: ' center',
     padding: '14px 24px',
     backgroundColor: theme.palette.background.paper,
+    [theme.breakpoints.down('md')]: {
+      width: '80%',
+      gap: 8,
+    },
   })
 );
 

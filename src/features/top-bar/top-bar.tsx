@@ -1,5 +1,5 @@
 // Import libraries
-import { Box, useTheme } from '@mui/material';
+import { Box, useTheme, useMediaQuery } from '@mui/material';
 import {
   faAngleLeft,
   faAngleRight,
@@ -23,6 +23,7 @@ const UserProps = {
 
 const TopBar = () => {
   const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <HeaderContainer>
@@ -35,13 +36,15 @@ const TopBar = () => {
           }}
         >
           <UserAvatar>{UserProps.name.charAt(0)}</UserAvatar>
-          <Typography
-            sx={{
-              fontSize: 14,
-            }}
-          >
-            {UserProps.name}
-          </Typography>
+          {matches ? (
+            <Typography
+              sx={{
+                fontSize: 14,
+              }}
+            >
+              {UserProps.name}
+            </Typography>
+          ) : null}
         </Box>
         <FontAwesomeIcon
           icon={faAngleDown}
