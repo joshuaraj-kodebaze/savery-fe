@@ -11,8 +11,8 @@ import {
 
 export const UserAvatar = styled(Avatar)<AvatarProps>(
   ({ theme }) => ({
-    backgroundColor: theme.palette.text.disabled,
-    color: theme.palette.common.black,
+    backgroundColor: theme.palette.divider,
+    color: '#000',
     width: 32,
     height: 32,
     fontSize: 14,
@@ -47,10 +47,10 @@ export const InputLabel = styled(Typography)<TypographyProps>(() => ({
 
 export const CustomFormControlLabel = styled(
   FormControlLabel
-)<FormControlLabelProps>(() => ({
-  color: '#767676',
+)<FormControlLabelProps>(({ theme }) => ({
   '& .MuiFormControlLabel-label': {
     fontSize: '14px',
+    color: theme.palette.text.secondary,
     fontWeight: 400,
   },
 }));

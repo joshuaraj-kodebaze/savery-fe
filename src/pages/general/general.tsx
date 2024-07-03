@@ -88,7 +88,7 @@ const General = () => {
                   marginLeft: '5px',
                   marginTop: '-2px',
                   fontWeight: 600,
-                  color: theme.palette.text.secondary,
+                  color: theme.palette.common.white,
                 }}
               >
                 Upload
