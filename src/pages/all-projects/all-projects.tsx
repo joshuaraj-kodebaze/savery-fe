@@ -15,16 +15,15 @@ import ProjectIcon from 'assets/icons/project-icon.svg';
 // Import components
 import SearchField from 'components/search-field/search-field';
 import Button from 'components/button/button';
+import Dialog from 'components/dialog/dialog';
+import TextInput from 'components/text-input/text-input';
+import ProjectCard from 'features/project-card/project-card';
+
+// Import styled components
 import {
   AddProjectButton,
   SectionToolBar,
 } from './all-projects.styles';
-import Dialog from 'components/dialog/dialog';
-import TextInput from 'components/text-input/text-input';
-
-const ProjectCard = () => {
-  return <Box></Box>;
-};
 
 const AllProjects = () => {
   const theme = useTheme();
@@ -60,6 +59,7 @@ const AllProjects = () => {
         component={'div'}
         sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}
       >
+        <ProjectCard />
         <AddProjectButton onClick={toggleDialog}>
           <Box
             sx={{
@@ -89,11 +89,18 @@ const AllProjects = () => {
             flexDirection: 'column',
             gap: 16,
             alignItems: 'center',
+            padding: 0,
           }}
         >
           <img src={ProjectIcon} style={{ width: 40 }} />
           <Typography>Name your new project</Typography>
-          <TextInput label={'Name'} placeholder="Enter name" />
+          <Box sx={{ width: '100%' }}>
+            <TextInput
+              label={'Name'}
+              placeholder="Enter name"
+              autoFocus
+            />
+          </Box>
           <Button variant="contained">Save</Button>
         </DialogContent>
       </Dialog>

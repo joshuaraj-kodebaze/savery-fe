@@ -7,6 +7,7 @@ const midGray = '#fbfbfb';
 const slightDarkGray = '#EBEBEB';
 const purple = '#CC00FF';
 const darkPurple = '#B505E1';
+const mildGrey = '#A3A3A3';
 
 export default {
     common: {
