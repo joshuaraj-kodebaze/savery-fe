@@ -1,15 +1,35 @@
 // Import libraries
-import { Typography, Box, useTheme } from '@mui/material';
+import {
+  Typography,
+  Box,
+  useTheme,
+  DialogContent,
+} from '@mui/material';
 import { faPlus } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+
+// Import assets
+import ProjectIcon from 'assets/icons/project-icon.svg';
 
 // Import components
 import SearchField from 'components/search-field/search-field';
 import Button from 'components/button/button';
 import { AddProjectButton, SectionToolBar } from './projects.styles';
+import Dialog from 'components/dialog/dialog';
+import TextInput from 'components/text-input/text-input';
+
+const ProjectCard = () => {
+  return <Box></Box>;
+};
 
 const Projects = () => {
   const theme = useTheme();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const toggleDialog = () => {
+    setIsDialogOpen((prevState) => !prevState);
+  };
 
   return (
     <Box component={'section'}>
@@ -27,6 +47,7 @@ const Projects = () => {
                 style={{ fontSize: 12 }}
               />
             }
+            onClick={toggleDialog}
           >
             New Project
           </Button>
@@ -36,7 +57,7 @@ const Projects = () => {
         component={'div'}
         sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}
       >
-        <AddProjectButton>
+        <AddProjectButton onClick={toggleDialog}>
           <Box
             sx={{
               display: 'flex',
@@ -58,6 +79,21 @@ const Projects = () => {
           </Box>
         </AddProjectButton>
       </Box>
+      <Dialog open={isDialogOpen} onClose={toggleDialog}>
+        <DialogContent
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+            alignItems: 'center',
+          }}
+        >
+          <img src={ProjectIcon} style={{ width: 40 }} />
+          <Typography>Name your new project</Typography>
+          <TextInput label={'Name'} placeholder="Enter name" />
+          <Button variant="contained">Save</Button>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };
