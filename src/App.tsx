@@ -11,6 +11,7 @@ import Saml from 'pages/saml/saml';
 import Policy from 'pages/policy/policy';
 import Terms from 'pages/terms/terms';
 import General from 'pages/general/general';
+import Plans from 'pages/plans/plans';
 import ErrorPage from 'pages/error-page/error-page';
 import Recent from 'pages/recent/recent';
 
@@ -25,6 +26,7 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Projects />} />
         <Route path={ROUTES.settings.GENERAL} element={<General />} />
+        <Route path={ROUTES.settings.PLANS} element={<Plans />} />
         <Route
           path={ROUTES.projects.RECENT_PROJECTS}
           element={<Recent />}
