@@ -59,5 +59,6 @@ export const NavLink = styled(Link)<TNavLink>(
       ? `3px solid ${theme.palette.primary.main}`
       : 'none',
     pointerEvents: disabled ? 'none' : 'auto',
+    textDecoration: 'none',
   })
 );
