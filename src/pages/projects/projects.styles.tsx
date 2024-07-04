@@ -10,6 +10,7 @@ export const AddProjectButton = styled('div')<BoxProps>(
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer',
   })
 );
 
