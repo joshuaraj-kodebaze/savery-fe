@@ -1,7 +1,5 @@
 // Import libraries
-import {
-    type LinkProps,
-} from '@mui/material';
+import { LinkProps } from "react-router-dom";
 
 export type TSidebarNavItems = {
     title: string;

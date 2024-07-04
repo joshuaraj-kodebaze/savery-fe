@@ -3,12 +3,12 @@ import {
   styled,
   Typography,
   Drawer,
-  Link,
   Box,
   type DrawerProps,
   type TypographyProps,
   type BoxProps,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // Import types
 import { TNavLink } from './side-bar.types';

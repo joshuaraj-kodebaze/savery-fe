@@ -47,8 +47,7 @@ const SideBar = () => {
                 return value.map((item, i) => (
                   <NavLink
                     key={`nav-item-${key}-${i}`}
-                    href={item.path}
-                    underline="none"
+                    to={item.path}
                     disabled={item.isDisabled}
                     isactivelink={activeLink === item.path ? 1 : 0}
                   >
@@ -79,8 +78,7 @@ const SideBar = () => {
                     {value.map((item, i) => (
                       <NavLink
                         key={`nav-item-${key}-${i}`}
-                        href={item.path}
-                        underline="none"
+                        to={item.path}
                         disabled={item.isDisabled}
                         isactivelink={
                           activeLink === item.path ? 1 : 0
@@ -108,8 +106,7 @@ const SideBar = () => {
               return value.map((item, i) => (
                 <NavLink
                   key={`nav-item-${key}-${i}`}
-                  href={item.path}
-                  underline="none"
+                  to={item.path}
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
