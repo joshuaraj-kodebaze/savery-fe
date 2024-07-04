@@ -31,6 +31,8 @@ const Projects = () => {
     setIsDialogOpen((prevState) => !prevState);
   };
 
+  console.log('isDialogOpen ->', isDialogOpen);
+
   return (
     <Box component={'section'}>
       <SectionToolBar component={'div'}>

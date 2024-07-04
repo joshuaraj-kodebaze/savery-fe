@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from 'layouts/main-layout/main-layout';
 
 // Import pages
-import Projects from 'pages/projects/projects';
+import AllProjects from 'pages/all-projects/all-projects';
 import Login from 'pages/login/login';
 import Saml from 'pages/saml/saml';
 import Policy from 'pages/policy/policy';
@@ -24,7 +24,7 @@ function App() {
       <Route path="404" element={<ErrorPage />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Projects />} />
+        <Route path="/" element={<AllProjects />} />
         <Route path={ROUTES.settings.GENERAL} element={<General />} />
         <Route path={ROUTES.settings.PLANS} element={<Plans />} />
         <Route
