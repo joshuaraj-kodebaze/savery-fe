@@ -5,6 +5,7 @@ import {
   Checkbox,
   FormGroup,
   useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -17,6 +18,8 @@ import {
   faCircleDot,
 } from '@fortawesome/pro-regular-svg-icons';
 import Grid from '@mui/material/Grid';
+import TextInput from 'components/text-input/text-input';
+import Button from 'components/button/button';
 
 // Import components
 import {
@@ -33,38 +36,30 @@ const UserProps = {
 
 const General = () => {
   const theme = useTheme();
-
-  const TempInputField = () => {
-    return (
-      <input
-        style={{
-          height: 32,
-          width: '100%',
-          border: `1px solid ${theme.palette.divider}`,
-        }}
-      ></input>
-    );
-  };
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <>
-      <Grid
-        container
-        spacing={4}
-        style={{ maxWidth: 600, paddingBottom: 80 }}
+    <div style={{ paddingBottom: 30 }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginBottom: 20,
+          alignItems: 'center',
+        }}
       >
+        <div style={{ display: 'flex' }}>
+          <FontAwesomeIcon icon={faStars} style={{ fontSize: 14 }} />{' '}
+          <Title>Workspace</Title>
+        </div>
+        {matches && <Button variant="contained">Save</Button>}
+      </div>
+      <Grid container spacing={4} style={{ maxWidth: 700 }}>
         <Grid item xs={12}>
-          <div style={{ display: 'flex' }}>
-            <FontAwesomeIcon
-              icon={faStars}
-              style={{ fontSize: 14 }}
-            />{' '}
-            <Title>Workspace</Title>
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <InputLabel>Workspace name</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'Workspace name'}
+            placeholder={`Neal's Workspace`}
+          />
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -109,20 +104,19 @@ const General = () => {
           </div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel> First name</InputLabel>
-          <TempInputField />
+          <TextInput label={'First name'} placeholder={'Neal'} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel> Last name</InputLabel>
-          <TempInputField />
+          <TextInput label={'Last name'} placeholder={'Drasbeck'} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel> Email</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'Email'}
+            placeholder={'nealdrasbeck@gmail.com'}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel> Phone</InputLabel>
-          <TempInputField />
+          <TextInput label={'Phone'} placeholder={'-'} />
         </Grid>
 
         {/* Authentication info */}
@@ -137,20 +131,30 @@ const General = () => {
           </div>
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel>SAML Authentication</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'SAML Authentication'}
+            placeholder={
+              'SAML Authentication is currently enabled for this team'
+            }
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel>Microsoft Authentication</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'Microsoft Authentication'}
+            placeholder={'-'}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel>Google Authentication</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'Google Authentication'}
+            placeholder={'-'}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <InputLabel>Github Authentication</InputLabel>
-          <TempInputField />
+          <TextInput
+            label={'Github Authentication'}
+            placeholder={'-'}
+          />
         </Grid>
 
         {/* Email notifications */}
@@ -246,7 +250,15 @@ const General = () => {
           </FormGroup>
         </Grid>
       </Grid>
-    </>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        {!matches && <Button variant="contained">Save</Button>}
+      </div>
+    </div>
   );
 };
 

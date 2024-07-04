@@ -3,7 +3,7 @@ import { styled, Input, type InputProps } from '@mui/material';
 
 export const TextFieldInput = styled(Input)<InputProps>(
   ({ theme }) => ({
-    width: 309,
+    width: '100%',
     height: 32,
     padding: '5.5px 8px',
     border: `1px solid ${theme.palette.divider}`,
