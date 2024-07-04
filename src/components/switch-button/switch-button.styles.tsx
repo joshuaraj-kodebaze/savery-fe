@@ -6,17 +6,20 @@ export const StyledSwitch = styled(Switch)<SwitchProps>(
     width: 54,
     height: 28,
     padding: 0,
+
     '& .MuiSwitch-switchBase': {
       padding: 0,
       margin: 2,
+      color: theme.palette.primary.main,
+
       transitionDuration: '300ms',
       '&.Mui-checked': {
         transform: 'translateX(26px)',
-        color: theme.palette.common.white,
+        color: theme.palette.primary.main,
         '& + .MuiSwitch-track': {
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: theme.palette.common.white,
           opacity: 1,
-          border: 0,
+          border: `1px solid ${theme.palette.divider}`,
         },
         '&.Mui-disabled + .MuiSwitch-track': {
           backgroundColor: theme.palette.text.disabled,
@@ -41,7 +44,10 @@ export const StyledSwitch = styled(Switch)<SwitchProps>(
     '& .MuiSwitch-track': {
       borderRadius: 26 / 2,
       backgroundColor:
-        theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+        theme.palette.mode === 'light'
+          ? theme.palette.common.white
+          : '#39393D',
+      border: `1px solid ${theme.palette.divider}`,
       opacity: 1,
       transition: theme.transitions.create(['background-color'], {
         duration: 500,
