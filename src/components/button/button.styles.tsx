@@ -7,6 +7,7 @@ export const StyledButton = styled(Button)<ButtonProps>(() => ({
   borderRadius: 24,
   textTransform: 'capitalize',
   fontSize: 12,
+  fontWeight: 600,
   boxShadow: 'none !important',
   lineHeight: 'inherit !important',
 }));
