@@ -13,9 +13,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Import components
 import { SearchFieldInput } from './search-field.styles';
 
-const SearchField = (props: Omit<TextFieldProps, 'InputProps'>) => {
+type TSearchField = {
+  onClose?: () => void;
+} & Omit<TextFieldProps, 'InputProps'>;
+
+const SearchField = (props: TSearchField) => {
   const theme = useTheme();
-  const { value } = props;
+  const { value, onClose } = props;
 
   return (
     <SearchFieldInput
@@ -39,7 +43,9 @@ const SearchField = (props: Omit<TextFieldProps, 'InputProps'>) => {
               style={{
                 fontSize: 12,
                 color: theme.palette.text.secondary,
+                cursor: 'pointer',
               }}
+              onClick={onClose}
             />
           </InputAdornment>
         ) : (

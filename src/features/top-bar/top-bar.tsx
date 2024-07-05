@@ -48,7 +48,10 @@ const TopBar = () => {
         </Box>
         <FontAwesomeIcon
           icon={faAngleDown}
-          style={{ color: theme.palette.text.primary }}
+          style={{
+            color: theme.palette.text.primary,
+            cursor: 'pointer',
+          }}
         />
       </UserContainer>
       <ToolBarContainer>
@@ -61,11 +64,15 @@ const TopBar = () => {
         >
           <FontAwesomeIcon
             icon={faAngleLeft}
-            style={{ color: theme.palette.text.disabled }}
+            style={{
+              color: theme.palette.text.disabled,
+            }}
           />
           <FontAwesomeIcon
             icon={faAngleRight}
-            style={{ color: theme.palette.text.disabled }}
+            style={{
+              color: theme.palette.text.disabled,
+            }}
           />
         </Box>
         <Logo />

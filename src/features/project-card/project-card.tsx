@@ -12,18 +12,23 @@ import { Card, Title, MembersCount } from './project-card.styles';
 // Import utils
 import { COLORS } from 'utils/colors';
 
-const ProjectCard = () => {
+export interface TProjectCard {
+  name: string;
+  membersCount: number;
+}
+
+const ProjectCard = ({ name, membersCount }: TProjectCard) => {
   return (
     <Card>
       <img src={ProjectIcon} style={{ width: 40 }} />
       <Box
         sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}
       >
-        <Title>Project X</Title>
+        <Title>{name}</Title>
         <Box
           sx={{ display: 'flex', justifyContent: 'space-between' }}
         >
-          <MembersCount>1 member</MembersCount>
+          <MembersCount>{membersCount} member</MembersCount>
           <FontAwesomeIcon
             icon={faEllipsis}
             style={{
