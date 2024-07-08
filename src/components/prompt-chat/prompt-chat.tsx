@@ -29,10 +29,15 @@ const PromptChat = (props: PromptChatProps) => {
           flexDirection: 'column',
           gap: '8px',
           marginBottom: '10px',
+          alignItems: position === 'left' ? 'flex-start' : 'flex-end',
         }}
       >
         <Box
-          sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '8px',
+          }}
         >
           <FontAwesomeIcon
             icon={faRobot}
