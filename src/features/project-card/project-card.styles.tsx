@@ -19,12 +19,16 @@ export const Card = styled('div')<BoxProps>(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   padding: 24,
-  cursor: 'pointer'
+  // cursor: 'pointer',
+  // '&:hover': {
+  //   borderColor: COLORS.mildGrey,
+  // },
 }));
 
 export const Title = styled(Typography)<TypographyProps>(() => ({
   fontSize: '14px',
   fontWeight: 600,
+  cursor: 'pointer',
 }));
 
 export const MembersCount = styled(Typography)<TypographyProps>(

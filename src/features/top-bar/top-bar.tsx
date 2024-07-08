@@ -5,10 +5,13 @@ import {
   faAngleRight,
   faAngleDown,
 } from '@fortawesome/pro-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import {
+  useParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import { useMemo, useEffect, useState } from 'react';
 
 // Import assets
 import ProjectIcon from 'assets/icons/project-icon.svg';
@@ -21,9 +24,10 @@ import {
   UserAvatar,
 } from './top-bar.styles';
 import Logo from 'components/logo/logo';
+import IconButton from 'components/icon-button/icon-button';
 
 // Import utils
-import { PROJECTS } from 'utils/constants';
+import { PROJECTS, ROUTES } from 'utils/constants';
 
 const UserProps = {
   name: 'Neal Drasback',
@@ -33,6 +37,21 @@ const TopBar = () => {
   const { projectId } = useParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [isNavigateBack, setIsNavigateBack] =
+    useState<boolean>(false);
+  const [isNavigateForward, setIsNavigateForward] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    if (location.pathname !== ROUTES.projects.ALL_PROJECTS) {
+      setIsNavigateBack(true);
+    } else {
+      setIsNavigateBack(false);
+    }
+  }, [location]);
 
   const projectDetails = useMemo(() => {
     if (!projectId) return;
@@ -61,13 +80,7 @@ const TopBar = () => {
             </Typography>
           ) : null}
         </Box>
-        <FontAwesomeIcon
-          icon={faAngleDown}
-          style={{
-            color: theme.palette.text.primary,
-            cursor: 'pointer',
-          }}
-        />
+        <IconButton icontype="icon" icon={faAngleDown} />
       </UserContainer>
       <ToolBarContainer>
         <Box
@@ -86,17 +99,17 @@ const TopBar = () => {
               alignItems: 'center',
             }}
           >
-            <FontAwesomeIcon
+            <IconButton
+              icontype="icon"
               icon={faAngleLeft}
-              style={{
-                color: theme.palette.text.disabled,
-              }}
+              disabled={!isNavigateBack}
+              onClick={() => navigate(-1)}
             />
-            <FontAwesomeIcon
+            <IconButton
+              icontype="icon"
               icon={faAngleRight}
-              style={{
-                color: theme.palette.text.disabled,
-              }}
+              disabled={!isNavigateForward}
+              onClick={() => navigate(1)}
             />
           </Box>
           {projectDetails ? (

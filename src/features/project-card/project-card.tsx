@@ -9,6 +9,7 @@ import ProjectIcon from 'assets/icons/project-icon.svg';
 
 // Import components
 import { Card, Title, MembersCount } from './project-card.styles';
+import IconButton from 'components/icon-button/icon-button';
 
 // Import utils
 import { COLORS } from 'utils/colors';
@@ -22,48 +23,45 @@ export interface TProjectCard {
 
 const ProjectCard = ({ id, name, membersCount }: TProjectCard) => {
   return (
-    <Link
-      to={`${ROUTES.projects.PROJECT}/${id}`}
-      style={{ textDecoration: 'none' }}
-    >
-      <Card>
-        <img
-          src={ProjectIcon}
-          style={{ width: 40 }}
-          alt="Project Icon"
-        />
+    <Card>
+      <img
+        src={ProjectIcon}
+        style={{ width: 40 }}
+        alt="Project Icon"
+      />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+        }}
+      >
+        <Link
+          to={`${ROUTES.projects.PROJECT}/${id}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Title>{name}</Title>
+        </Link>
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
-            gap: '4px',
+            justifyContent: 'space-between',
+            position: 'relative',
           }}
         >
-          <Title>{name}</Title>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              position: 'relative',
+          <MembersCount>{membersCount} member</MembersCount>
+          <IconButton
+            icontype="icon"
+            icon={faEllipsis}
+            style={{
+              color: COLORS.mildGrey,
+              fontSize: 18,
             }}
-          >
-            <MembersCount>{membersCount} member</MembersCount>
-            <FontAwesomeIcon
-              icon={faEllipsis}
-              style={{
-                color: COLORS.mildGrey,
-                fontSize: 18,
-                cursor: 'pointer',
-                zIndex: 999,
-                position: 'absolute',
-                right: 0,
-              }}
-              onClick={() => console.log('More options...')}
-            />
-          </Box>
+            onClick={() => console.log('More options...')}
+          />
         </Box>
-      </Card>
-    </Link>
+      </Box>
+    </Card>
   );
 };
 

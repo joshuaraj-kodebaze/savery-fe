@@ -5,6 +5,9 @@ import {
   type TextFieldProps,
 } from '@mui/material';
 
+// Import utils
+import { COLORS } from 'utils/colors';
+
 export const SearchFieldInput = styled(TextField)<TextFieldProps>(
   ({ theme, value }) => ({
     width: 298,
@@ -18,6 +21,9 @@ export const SearchFieldInput = styled(TextField)<TextFieldProps>(
       '& fieldset': {
         borderColor: theme.palette.divider,
         borderRadius: 24,
+        '&:hover': {
+          borderColor: COLORS.mildGrey,
+        },
       },
       '& input': {
         padding: value ? '7px 7px 7px 0' : '7px 16px 7px 0',
@@ -27,7 +33,10 @@ export const SearchFieldInput = styled(TextField)<TextFieldProps>(
         },
       },
       '&.Mui-focused fieldset': {
-        border: `1px solid #A3A3A3`,
+        border: `1px solid ${COLORS.mildGrey}`,
+      },
+      '&:hover fieldset': {
+        borderColor: COLORS.mildGrey,
       },
     },
     [theme.breakpoints.down('sm')]: {

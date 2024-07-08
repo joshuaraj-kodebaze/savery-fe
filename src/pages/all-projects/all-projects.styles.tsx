@@ -1,6 +1,9 @@
 // Import libraries
 import { styled, type BoxProps } from '@mui/material';
 
+// Import utils
+import { COLORS } from 'utils/colors';
+
 export const AddProjectButton = styled('div')<BoxProps>(
   ({ theme }) => ({
     width: 182,
@@ -11,6 +14,9 @@ export const AddProjectButton = styled('div')<BoxProps>(
     justifyContent: 'center',
     alignItems: 'center',
     cursor: 'pointer',
+    '&:hover': {
+      borderColor: COLORS.mildGrey,
+    },
   })
 );
 

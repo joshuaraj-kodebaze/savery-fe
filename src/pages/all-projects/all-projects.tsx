@@ -7,7 +7,8 @@ import {
 } from '@mui/material';
 import { faPlus } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 // Import assets
 import ProjectIcon from 'assets/icons/project-icon.svg';
@@ -33,11 +34,19 @@ import { TProjectCard } from 'features/project-card/project-card';
 
 const AllProjects = () => {
   const theme = useTheme();
+  const location = useLocation();
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [projectName, setProjectName] = useState<string>('');
   const [projectList, setProjectList] =
     useState<TProjectCard[]>(PROJECTS);
   const [searchText, setSearchText] = useState<string>('');
+
+  useEffect(() => {
+    if (location?.state?.isCreate) {
+      setIsDialogOpen(true);
+    }
+  }, [location]);
 
   const projects = useMemo(() => {
     if (!searchText) return projectList;

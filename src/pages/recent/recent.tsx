@@ -2,11 +2,17 @@
 import { Typography, Box } from '@mui/material';
 import { faPlus } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 
 // Import components
 import Button from 'components/button/button';
 
+// Import utils
+import { ROUTES } from 'utils/constants';
+
 const Recent = () => {
+  const navigate = useNavigate();
+
   return (
     <Box component={'section'}>
       <Typography sx={{ fontSize: '14px', fontWeight: 600 }}>
@@ -40,6 +46,11 @@ const Recent = () => {
                 icon={faPlus}
                 style={{ fontSize: 12 }}
               />
+            }
+            onClick={() =>
+              navigate(ROUTES.projects.ALL_PROJECTS, {
+                state: { isCreate: true },
+              })
             }
           >
             Create Project

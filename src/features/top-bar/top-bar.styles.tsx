@@ -1,11 +1,12 @@
 // Import libraries
 import { styled } from '@mui/material';
-import AppBar, { AppBarProps } from '@mui/material/AppBar';
 import {
   Avatar,
   Box,
+  AppBar,
   type AvatarProps,
   type BoxProps,
+  type AppBarProps,
 } from '@mui/material';
 
 export const HeaderContainer = styled(AppBar)<AppBarProps>(
