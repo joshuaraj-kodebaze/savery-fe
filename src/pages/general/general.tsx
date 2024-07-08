@@ -2,7 +2,6 @@
 import {
   Typography,
   Divider,
-  Checkbox,
   FormGroup,
   useTheme,
   useMediaQuery,
@@ -14,17 +13,15 @@ import {
   faUserBountyHunter,
   faLockKeyhole,
   faEnvelope,
-  faCircle,
-  faCircleDot,
 } from '@fortawesome/pro-regular-svg-icons';
 import Grid from '@mui/material/Grid';
 import TextInput from 'components/text-input/text-input';
 import Button from 'components/button/button';
+import CustomRadioButton from 'components/custom-radio-button/custom-radio-button';
 
 // Import components
 import {
   CustomFormControlLabel,
-  InputLabel,
   Title,
   UserAvatar,
   UploadButtonContainer,
@@ -171,80 +168,15 @@ const General = () => {
         <Grid item xs={12} md={6}>
           <FormGroup>
             <CustomFormControlLabel
-              control={
-                <Checkbox
-                  defaultChecked
-                  icon={
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.disabled,
-                      }}
-                    />
-                  }
-                  checkedIcon={
-                    <FontAwesomeIcon
-                      icon={faCircleDot}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  }
-                />
-              }
+              control={<CustomRadioButton />}
               label="Billing and account"
             />
             <CustomFormControlLabel
-              control={
-                <Checkbox
-                  icon={
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.disabled,
-                      }}
-                    />
-                  }
-                  checkedIcon={
-                    <FontAwesomeIcon
-                      icon={faCircleDot}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  }
-                />
-              }
+              control={<CustomRadioButton />}
               label="Announcements"
             />
             <CustomFormControlLabel
-              control={
-                <Checkbox
-                  defaultChecked
-                  icon={
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.disabled,
-                      }}
-                    />
-                  }
-                  checkedIcon={
-                    <FontAwesomeIcon
-                      icon={faCircleDot}
-                      style={{
-                        fontSize: 14,
-                        color: theme.palette.text.primary,
-                      }}
-                    />
-                  }
-                />
-              }
+              control={<CustomRadioButton />}
               label="Newsletter"
             />
           </FormGroup>
