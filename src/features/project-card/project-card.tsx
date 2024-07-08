@@ -1,8 +1,8 @@
 // Import libraries
-import { Box } from '@mui/material';
+import { Box, Popover } from '@mui/material';
 import { faEllipsis } from '@fortawesome/pro-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 // Import assets
 import ProjectIcon from 'assets/icons/project-icon.svg';
@@ -10,6 +10,7 @@ import ProjectIcon from 'assets/icons/project-icon.svg';
 // Import components
 import { Card, Title, MembersCount } from './project-card.styles';
 import IconButton from 'components/icon-button/icon-button';
+import CustomPopover from 'components/custom-popover/custom-popover';
 
 // Import utils
 import { COLORS } from 'utils/colors';
@@ -22,6 +23,23 @@ export interface TProjectCard {
 }
 
 const ProjectCard = ({ id, name, membersCount }: TProjectCard) => {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const popperId = open ? 'simple-popover' : undefined;
+
   return (
     <Card>
       <img
@@ -51,14 +69,29 @@ const ProjectCard = ({ id, name, membersCount }: TProjectCard) => {
         >
           <MembersCount>{membersCount} member</MembersCount>
           <IconButton
+            aria-describedby={popperId}
             icontype="icon"
             icon={faEllipsis}
             style={{
               color: COLORS.mildGrey,
               fontSize: 18,
             }}
-            onClick={() => console.log('More options...')}
+            onClick={handleClick}
           />
+          <CustomPopover
+            id={popperId}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <Box>Rename</Box>
+            <Box>Delete Project</Box>
+            <Box>Add members</Box>
+          </CustomPopover>
         </Box>
       </Box>
     </Card>
