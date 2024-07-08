@@ -15,6 +15,7 @@ export const TextContainer = styled('div')(({ theme }) => ({
   fontWeight: 400,
   color: theme.palette.text.primary,
   wordBreak: 'break-word',
+  width: 'fit-content',
 }));
 
 export const Username = styled(Typography)<TypographyProps>(() => ({
