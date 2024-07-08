@@ -19,7 +19,11 @@ import {
   SIDEBAR_SECTIONS,
 } from './side-bar.utils';
 
-const SideBar = () => {
+type SideBarProps = {
+  isOpen: boolean;
+};
+
+const SideBar = ({ isOpen }: SideBarProps) => {
   const location = useLocation();
 
   const [activeLink, setActiveLink] = useState<string>('');
@@ -29,7 +33,7 @@ const SideBar = () => {
   }, [location]);
 
   return (
-    <SideBarContainer variant="permanent" open>
+    <SideBarContainer variant="persistent" open={isOpen}>
       <SideBarInnerContainer>
         <Box
           component={'div'}

@@ -4,6 +4,7 @@ import {
   faAngleLeft,
   faAngleRight,
   faAngleDown,
+  faAngleUp,
 } from '@fortawesome/pro-regular-svg-icons';
 import { Typography } from '@mui/material';
 import {
@@ -33,7 +34,12 @@ const UserProps = {
   name: 'Neal Drasback',
 };
 
-const TopBar = () => {
+type TopBarProps = {
+  isOpen: boolean;
+  onClick: () => void;
+};
+
+const TopBar = ({ isOpen, onClick }: TopBarProps) => {
   const { projectId } = useParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
@@ -80,7 +86,11 @@ const TopBar = () => {
             </Typography>
           ) : null}
         </Box>
-        <IconButton icontype="icon" icon={faAngleDown} />
+        <IconButton
+          icontype="icon"
+          icon={isOpen ? faAngleUp : faAngleDown}
+          onClick={onClick}
+        />
       </UserContainer>
       <ToolBarContainer>
         <Box

@@ -23,9 +23,12 @@ export const SideBarContainer = styled(Drawer)<DrawerProps>(
       backgroundColor: theme.palette.background.default,
       paddingTop: 74,
       paddingBottom: 24,
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+      },
     },
     [theme.breakpoints.down('md')]: {
-      display: 'none',
+      // display: 'none',
     },
   })
 );
