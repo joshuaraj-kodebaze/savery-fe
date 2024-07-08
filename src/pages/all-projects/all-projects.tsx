@@ -25,29 +25,18 @@ import {
   SectionToolBar,
 } from './all-projects.styles';
 
-import { TProjectCard } from 'features/project-card/project-card';
+// Import utils
+import { PROJECTS } from 'utils/constants';
 
-const INITIAL_STATE = [
-  {
-    name: 'Project A',
-    membersCount: 1,
-  },
-  {
-    name: 'Project B',
-    membersCount: 2,
-  },
-  {
-    name: 'Project C',
-    membersCount: 3,
-  },
-];
+// Import types
+import { TProjectCard } from 'features/project-card/project-card';
 
 const AllProjects = () => {
   const theme = useTheme();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [projectName, setProjectName] = useState<string>('');
   const [projectList, setProjectList] =
-    useState<TProjectCard[]>(INITIAL_STATE);
+    useState<TProjectCard[]>(PROJECTS);
   const [searchText, setSearchText] = useState<string>('');
 
   const projects = useMemo(() => {
@@ -108,6 +97,7 @@ const AllProjects = () => {
         {projects?.map((project, idx) => (
           <ProjectCard
             key={`project-card-${idx}`}
+            id={project.id}
             name={project.name}
             membersCount={project.membersCount}
           />

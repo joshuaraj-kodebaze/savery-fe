@@ -2,6 +2,7 @@ export const ROUTES = {
   projects: {
     ALL_PROJECTS: '/',
     RECENT_PROJECTS: '/recent-projects',
+    PROJECT: '/project'
   },
   user: {
     LOGIN: '/login',
@@ -16,3 +17,21 @@ export const ROUTES = {
     APPS_AND_INTEGRATIONS: '/apps-integrations',
   },
 };
+
+export const PROJECTS = [
+  {
+    id: 1,
+    name: 'Project A',
+    membersCount: 1,
+  },
+  {
+    id: 2,
+    name: 'Project B',
+    membersCount: 2,
+  },
+  {
+    id: 3,
+    name: 'Project C',
+    membersCount: 3,
+  },
+];

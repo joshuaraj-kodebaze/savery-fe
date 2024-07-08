@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Import layouts
 import MainLayout from 'layouts/main-layout/main-layout';
+import MinimalLayout from 'layouts/minimal-layout/minimal-layout';
 
 // Import pages
 import AllProjects from 'pages/all-projects/all-projects';
@@ -14,6 +15,7 @@ import General from 'pages/general/general';
 import Plans from 'pages/plans/plans';
 import ErrorPage from 'pages/error-page/error-page';
 import Recent from 'pages/recent/recent';
+import Agent from 'pages/agent/agent';
 
 // Import utils
 import { ROUTES } from 'utils/constants';
@@ -30,6 +32,12 @@ function App() {
         <Route
           path={ROUTES.projects.RECENT_PROJECTS}
           element={<Recent />}
+        />
+      </Route>
+      <Route element={<MinimalLayout />}>
+        <Route
+          path={`${ROUTES.projects.PROJECT}/:projectId`}
+          element={<Agent />}
         />
       </Route>
       <Route path={ROUTES.user.LOGIN} element={<Login />} />

@@ -52,6 +52,7 @@ const SearchField = (props: TSearchField) => {
           <></>
         ),
       }}
+      autoComplete="off"
       {...props}
     />
   );
