@@ -15,7 +15,6 @@ import { TNavLink } from './side-bar.types';
 
 export const SideBarContainer = styled(Drawer)<DrawerProps>(
   ({ theme }) => ({
-    display: 'block',
     '& .MuiPaper-root': {
       width: 208,
       height: '100vh',
@@ -26,9 +25,6 @@ export const SideBarContainer = styled(Drawer)<DrawerProps>(
       [theme.breakpoints.down('md')]: {
         width: '100%',
       },
-    },
-    [theme.breakpoints.down('md')]: {
-      // display: 'none',
     },
   })
 );

@@ -16,9 +16,13 @@ import { useAutosizeTextArea } from 'hooks/useAutosizeTextArea';
 
 type PromptFieldProps = {
   containerStyles?: React.CSSProperties;
+  onButtonClick: (data: string) => void;
 };
 
-const PromptField = ({ containerStyles }: PromptFieldProps) => {
+const PromptField = ({
+  containerStyles,
+  onButtonClick = () => {},
+}: PromptFieldProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const [width, setWidth] = useState(50);
@@ -68,6 +72,7 @@ const PromptField = ({ containerStyles }: PromptFieldProps) => {
         variant="contained"
         startIcon={<img src={SaveryIcon} alt="Button Icon" />}
         style={{ minWidth: 120, maxWidth: 120 }}
+        onClick={() => onButtonClick(description)}
       >
         Save my day
       </Button>
