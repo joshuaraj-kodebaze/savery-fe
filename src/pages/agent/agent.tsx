@@ -1,15 +1,40 @@
 // Import libraries
-import { Box } from '@mui/material';
+import { useRef, useEffect } from 'react';
 
 // Import styled components
-import { SectionContainer } from './agent.styles';
+import { SectionContainer, ChatContainer } from './agent.styles';
 import PromptChat from '../../components/prompt-chat/prompt-chat';
 import PromptField from 'features/prompt-field/prompt-field';
 
 const Agent = () => {
+  // const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   console.log('chatContainerRef ->', chatContainerRef);
+  // }, [chatContainerRef]);
+
+  // const disableScrolling = () => {
+  //   if (chatContainerRef.current) {
+  //     setTimeout(() => {
+  //       // @ts-expect-error
+  //       chatContainerRef.current.style.overflow = 'hidden';
+  //     }, 1000);
+  //   }
+  // };
+
+  // const enableScrolling = () => {
+  //   // @ts-expect-error
+  //   chatContainerRef.current.style.overflow = '';
+  // };
+
   return (
     <SectionContainer>
-      <Box>
+      <ChatContainer
+      // ref={chatContainerRef}
+      // onScroll={disableScrolling}
+      // onMouseMove={enableScrolling}
+      // onClick={enableScrolling}
+      >
         <PromptChat
           username="Agent P."
           text="Hey, I'm Agent. P. I will be your Project Manager on Project X"
@@ -40,8 +65,67 @@ const Agent = () => {
           backgroundColor="#E9EEFF"
           position="left"
         />
-      </Box>
-
+        <PromptChat
+          username="Agent T."
+          text="Hey, I'm DR T. I will be your Tester on Project X"
+          backgroundColor="#FFE3E3"
+          position="right"
+        />
+        <PromptChat
+          username="Agent P."
+          text="Looking forward to seeing what we can help you with..."
+          backgroundColor="#E9EEFF"
+          position="left"
+        />
+        <PromptChat
+          username="Agent T."
+          text="Hey, I'm DR T. I will be your Tester on Project X"
+          backgroundColor="#FFE3E3"
+          position="right"
+        />
+        <PromptChat
+          username="Agent P."
+          text="Looking forward to seeing what we can help you with..."
+          backgroundColor="#E9EEFF"
+          position="left"
+        />
+        <PromptChat
+          username="Agent T."
+          text="Hey, I'm DR T. I will be your Tester on Project X"
+          backgroundColor="#FFE3E3"
+          position="right"
+        />
+        <PromptChat
+          username="Agent P."
+          text="Looking forward to seeing what we can help you with..."
+          backgroundColor="#E9EEFF"
+          position="left"
+        />
+        <PromptChat
+          username="Agent T."
+          text="Hey, I'm DR T. I will be your Tester on Project X"
+          backgroundColor="#FFE3E3"
+          position="right"
+        />
+        <PromptChat
+          username="Agent P."
+          text="Looking forward to seeing what we can help you with..."
+          backgroundColor="#E9EEFF"
+          position="left"
+        />
+        <PromptChat
+          username="Agent T."
+          text="Hey, I'm DR T. I will be your Tester on Project X"
+          backgroundColor="#FFE3E3"
+          position="right"
+        />
+        <PromptChat
+          username="Agent P."
+          text="Looking forward to seeing what we can help you with..."
+          backgroundColor="#E9EEFF"
+          position="left"
+        />
+      </ChatContainer>
       <PromptField />
     </SectionContainer>
   );

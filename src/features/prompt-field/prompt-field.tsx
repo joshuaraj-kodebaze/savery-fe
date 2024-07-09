@@ -1,21 +1,73 @@
+// Import libraries
+import { useState, useRef, useEffect } from 'react';
+
 // Import components
 import {
   PromptInputContainer,
-  PromptInputField,
+  PromptTextAresField,
 } from './prompt-field.styles';
 import Button from 'components/button/button';
 
 // Import assets
 import SaveryIcon from '../../assets/icons/savery-icon.svg';
 
-const PromptField = () => {
+// Import hooks
+import { useAutosizeTextArea } from 'hooks/useAutosizeTextArea';
+
+type PromptFieldProps = {
+  containerStyles?: React.CSSProperties;
+};
+
+const PromptField = ({ containerStyles }: PromptFieldProps) => {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const [width, setWidth] = useState(50);
+  const [description, setDescription] = useState<string>('');
+  const [isMultiLine, setIsMultiLine] = useState(false);
+  const [initialWidth, setInitialWidth] = useState(0);
+
+  useAutosizeTextArea(textAreaRef.current, description);
+
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setWidth(e.target.value.length);
+    setDescription(e.target.value);
+  };
+
+  useEffect(() => {
+    if (!textAreaRef.current?.offsetWidth) return;
+    const val = width * 6.5;
+
+    if (isMultiLine && val < initialWidth) {
+      setIsMultiLine(false);
+      return;
+    }
+
+    if (val >= textAreaRef.current?.offsetWidth) {
+      setInitialWidth(textAreaRef.current?.offsetWidth);
+      setIsMultiLine(true);
+    }
+  }, [width, textAreaRef, isMultiLine, initialWidth]);
+
   return (
-    <PromptInputContainer>
-      <PromptInputField placeholder="Type your prompt Item here..." />
+    <PromptInputContainer
+      style={{ ...containerStyles }}
+      isMultiLine={isMultiLine}
+    >
+      <PromptTextAresField
+        ref={textAreaRef}
+        placeholder="Type your prompt Item here..."
+        value={description}
+        onChange={changeHandler}
+        rows={1}
+        autoFocus
+        isMultiLine={isMultiLine}
+      />
       <Button
         variant="contained"
         startIcon={<img src={SaveryIcon} alt="Button Icon" />}
-        style={{ minWidth: 120 }}
+        style={{ minWidth: 120, maxWidth: 120 }}
       >
         Save my day
       </Button>
