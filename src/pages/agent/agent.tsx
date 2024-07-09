@@ -5,6 +5,34 @@ import { useRef, useEffect } from 'react';
 import { SectionContainer, ChatContainer } from './agent.styles';
 import PromptChat from '../../components/prompt-chat/prompt-chat';
 import PromptField from 'features/prompt-field/prompt-field';
+import PromptHtml from 'components/prompt-html/prompt-html';
+
+const dummyHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div id="face-recognition">
+            <button id="face-recognition-btn">Login with Face</button>
+            <video id="video" width="300" height="200" autoplay></video>
+        </div>
+        <div id="fallback-login">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="login-btn">Login</button>
+        </div>
+        <div id="error-message" class="hidden">Invalid login attempt. Please try again.</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+`;
 
 const Agent = () => {
   // const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -125,6 +153,7 @@ const Agent = () => {
           backgroundColor="#E9EEFF"
           position="left"
         />
+        <PromptHtml content={dummyHtml} />
       </ChatContainer>
       <PromptField />
     </SectionContainer>
