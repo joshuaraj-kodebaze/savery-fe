@@ -35,7 +35,17 @@ const MainLayout = () => {
   }, [isMobile, dispatch]);
 
   useEffect(() => {
-    if (location.pathname.includes(ROUTES.projects.PROJECT)) {
+    if (
+      isSidebarOpen &&
+      location.pathname.includes(ROUTES.projects.PROJECT)
+    ) {
+      dispatch(toggleSideBar());
+    }
+
+    if (
+      !isSidebarOpen &&
+      !location.pathname.includes(ROUTES.projects.PROJECT)
+    ) {
       dispatch(toggleSideBar());
     }
   }, [location, dispatch]);
