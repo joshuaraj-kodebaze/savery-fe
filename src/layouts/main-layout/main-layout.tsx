@@ -1,5 +1,5 @@
 // Import libraries
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useTheme, useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
 
@@ -17,10 +17,14 @@ import { LayoutContainer } from './main-layout.styles';
 // Import redux
 import { toggleSideBar } from 'store/user/userSlice';
 
+// Import utils
+import { ROUTES } from 'utils/constants';
+
 const MainLayout = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const { isSidebarOpen } = useAppSelector((state) => state.user);
 
@@ -29,6 +33,12 @@ const MainLayout = () => {
       dispatch(toggleSideBar());
     }
   }, [isMobile, dispatch]);
+
+  useEffect(() => {
+    if (location.pathname.includes(ROUTES.projects.PROJECT)) {
+      dispatch(toggleSideBar());
+    }
+  }, [location, dispatch]);
 
   const handleClick = () => dispatch(toggleSideBar());
 
