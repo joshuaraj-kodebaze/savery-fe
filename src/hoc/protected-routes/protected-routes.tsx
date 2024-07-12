@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 
 // Import utils
-import { ROUTES } from 'utils/constants';
+// import { ROUTES } from 'utils/constants';
 
 const ProtectedRoute = () => {
   const navigate = useNavigate();

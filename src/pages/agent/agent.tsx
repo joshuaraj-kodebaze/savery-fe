@@ -1,35 +1,46 @@
 // Import libraries
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Box, Divider, useTheme, useMediaQuery } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp } from '@fortawesome/pro-regular-svg-icons';
+
+// Import hooks
+import { useAppSelector } from 'hooks/useAppSelector';
 
 // Import styled components
 import {
   SectionContainer,
   ChatContainer,
   SectionInnerContainer,
+  Title,
 } from './agent.styles';
 import PromptChat from 'components/prompt-chat/prompt-chat';
 import PromptField from 'features/prompt-field/prompt-field';
 import TaskBar from 'features/task-bar/task-bar';
-
-const CHAT_HISTORY = [
-  {
-    name: 'Agent P.',
-    text: "Hey, I'm Agent. P. I will be your Project Manager on Project X",
-    backgroundColor: '#E9EEFF',
-    code: {},
-  },
-];
+import Button from 'components/button/button';
 
 const Agent = () => {
-  const [isTaskBarOpen, setIsTaskBarOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handlePromptSubmit = (prompt: string) => {
+  const [isTaskBarOpen, setIsTaskBarOpen] = useState(false);
+  const [hasSubmittedPrompt, setHasSubmittedPrompt] = useState(false);
+
+  const { isSidebarOpen } = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!isMobile && hasSubmittedPrompt)
+      return setIsTaskBarOpen(true);
+    else return setIsTaskBarOpen(false);
+  }, [isMobile, hasSubmittedPrompt]);
+
+  const handlePromptSubmit = () => {
     setIsTaskBarOpen(true);
-    console.log('prompt ->', prompt);
+    setHasSubmittedPrompt(true);
   };
 
   return (
-    <SectionContainer taskBar={isTaskBarOpen}>
+    <SectionContainer taskBar={isTaskBarOpen} sideBar={isSidebarOpen}>
       <SectionInnerContainer>
         <ChatContainer taskBar={isTaskBarOpen}>
           <PromptChat
@@ -130,11 +141,59 @@ const Agent = () => {
             position="left"
           />
         </ChatContainer>
-        {!isTaskBarOpen ? (
+        {!isTaskBarOpen && !hasSubmittedPrompt ? (
           <PromptField onButtonClick={handlePromptSubmit} />
         ) : null}
+        {hasSubmittedPrompt && isMobile ? (
+          <>
+            <Divider
+              sx={{
+                marginLeft: -2,
+                marginRight: -2,
+              }}
+            />
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '16px 0px',
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '8px',
+                  alignItems: 'center',
+                }}
+                onClick={() => setIsTaskBarOpen(true)}
+              >
+                <Title>Tasks</Title>
+                <FontAwesomeIcon
+                  icon={faChevronUp}
+                  style={{ fontSize: 12, strokeWidth: 1.5 }}
+                />
+              </Box>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: theme.palette.common.white,
+                  color: theme.palette.common.black,
+                  border: `1px solid ${theme.palette.divider}`,
+                }}
+              >
+                Cancel project
+              </Button>
+            </Box>
+          </>
+        ) : null}
       </SectionInnerContainer>
-      <TaskBar open={isTaskBarOpen} />
+      <TaskBar
+        open={isTaskBarOpen}
+        onClose={() => setIsTaskBarOpen(false)}
+      />
     </SectionContainer>
   );
 };

@@ -17,6 +17,9 @@ export const AddProjectButton = styled('div')<BoxProps>(
     '&:hover': {
       borderColor: COLORS.mildGrey,
     },
+    [theme.breakpoints.down('sm')]: {
+      width: 'calc(50% - 8px)',
+    },
   })
 );
 

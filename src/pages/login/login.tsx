@@ -87,7 +87,6 @@ const Login = () => {
 
       <SamlButtonContainer
         onClick={() => {
-          console.log('SAML SSO button clicked');
           navigate('/saml');
         }}
       >

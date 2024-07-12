@@ -33,7 +33,7 @@ const UserProps = {
 
 const General = () => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <div style={{ paddingBottom: 30 }}>
@@ -49,7 +49,7 @@ const General = () => {
           <FontAwesomeIcon icon={faStars} style={{ fontSize: 14 }} />{' '}
           <Title>Workspace</Title>
         </div>
-        {matches && <Button variant="contained">Save</Button>}
+        {isMobile && <Button variant="contained">Save</Button>}
       </div>
       <Grid container spacing={4} style={{ maxWidth: 700 }}>
         <Grid item xs={12}>
@@ -188,7 +188,7 @@ const General = () => {
           justifyContent: 'flex-end',
         }}
       >
-        {!matches && <Button variant="contained">Save</Button>}
+        {!isMobile && <Button variant="contained">Save</Button>}
       </div>
     </div>
   );

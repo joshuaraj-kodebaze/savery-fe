@@ -21,9 +21,10 @@ import {
 
 type SideBarProps = {
   isOpen: boolean;
+  handleClose?: () => void;
 };
 
-const SideBar = ({ isOpen }: SideBarProps) => {
+const SideBar = ({ isOpen, handleClose }: SideBarProps) => {
   const location = useLocation();
 
   const [activeLink, setActiveLink] = useState<string>('');
@@ -54,6 +55,7 @@ const SideBar = ({ isOpen }: SideBarProps) => {
                     to={item.path}
                     disabled={item.isDisabled}
                     isactivelink={activeLink === item.path ? 1 : 0}
+                    onClick={handleClose}
                   >
                     {item.title}
                   </NavLink>
@@ -87,6 +89,7 @@ const SideBar = ({ isOpen }: SideBarProps) => {
                         isactivelink={
                           activeLink === item.path ? 1 : 0
                         }
+                        onClick={handleClose}
                       >
                         {item.title}
                       </NavLink>
@@ -118,6 +121,7 @@ const SideBar = ({ isOpen }: SideBarProps) => {
                   }}
                   disabled={item.isDisabled}
                   target="_blank"
+                  onClick={handleClose}
                 >
                   {item.title}
                   <FontAwesomeIcon

@@ -49,6 +49,15 @@ export const ToolBarContainer = styled(Box)<BoxProps>(
   })
 );
 
+export const SimpleContainer = styled(Box)<BoxProps>(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: ' center',
+  padding: '14px 24px',
+  backgroundColor: theme.palette.background.paper,
+}));
+
 export const UserAvatar = styled(Avatar)<AvatarProps>(
   ({ theme }) => ({
     backgroundColor: theme.palette.divider,
@@ -57,5 +66,17 @@ export const UserAvatar = styled(Avatar)<AvatarProps>(
     height: 24,
     fontSize: 12,
     fontWeight: 700,
+  })
+);
+
+export const ToolBarInnerContainer = styled(Box)<BoxProps>(
+  ({ theme }) => ({
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: 'fit-content',
+      justifyContent: 'space-between',
+    },
   })
 );

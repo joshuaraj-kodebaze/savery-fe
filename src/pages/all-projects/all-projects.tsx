@@ -46,6 +46,7 @@ const AllProjects = () => {
     if (location?.state?.isCreate) {
       setIsDialogOpen(true);
     }
+    window.history.replaceState({}, '');
   }, [location]);
 
   const projects = useMemo(() => {

@@ -84,7 +84,7 @@ const DummyPricingData = [
 
 const Plans = () => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.up('md'));
 
   const [isYearly, setIsYearly] = useState<boolean>(false);
 
@@ -102,7 +102,7 @@ const Plans = () => {
           style={{
             color: theme.palette.common.black,
             borderColor: theme.palette.common.black,
-            width: !matches ? 200 : '100%',
+            width: !isMobile ? 200 : '100%',
           }}
         >
           {plan.buttonText}
@@ -115,7 +115,7 @@ const Plans = () => {
           style={{
             color: theme.palette.common.white,
             backgroundColor: theme.palette.common.black,
-            width: !matches ? 200 : '100%',
+            width: !isMobile ? 200 : '100%',
           }}
         >
           {plan.buttonText}
@@ -126,7 +126,7 @@ const Plans = () => {
         <Button
           variant="contained"
           style={{
-            width: !matches ? 200 : '100%',
+            width: !isMobile ? 200 : '100%',
           }}
         >
           {plan.buttonText}
@@ -147,7 +147,7 @@ const Plans = () => {
         <div style={{ display: 'flex' }}>
           <Title>Workspace plans</Title>
         </div>
-        {matches && (
+        {isMobile && (
           <div>
             <div
               style={{
@@ -169,13 +169,13 @@ const Plans = () => {
           </div>
         )}
       </div>
-      <Grid container spacing={matches ? 2 : 4} style={{}}>
+      <Grid container spacing={isMobile ? 2 : 4} style={{}}>
         {DummyPricingData.map((plan, index) => (
           <Grid
             item
             xs={12}
             md={3}
-            style={{ width: '100%', maxWidth: matches ? 264 : '' }}
+            style={{ width: '100%', maxWidth: isMobile ? 264 : '' }}
             key={index}
           >
             <div
@@ -233,7 +233,7 @@ const Plans = () => {
           </Grid>
         ))}
       </Grid>
-      {!matches && (
+      {!isMobile && (
         <div
           style={{
             display: 'flex',

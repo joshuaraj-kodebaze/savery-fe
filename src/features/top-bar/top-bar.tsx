@@ -23,9 +23,14 @@ import {
   UserContainer,
   ToolBarContainer,
   UserAvatar,
+  ToolBarInnerContainer,
+  SimpleContainer,
 } from './top-bar.styles';
 import Logo from 'components/logo/logo';
 import IconButton from 'components/icon-button/icon-button';
+
+// Import hooks
+import { useAppSelector } from 'hooks/useAppSelector';
 
 // Import utils
 import { PROJECTS, ROUTES } from 'utils/constants';
@@ -42,9 +47,11 @@ type TopBarProps = {
 const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
   const { projectId } = useParams();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const location = useLocation();
   const navigate = useNavigate();
+  const { userToken } = useAppSelector((state) => state.auth);
 
   const [isNavigateBack, setIsNavigateBack] =
     useState<boolean>(false);
@@ -65,88 +72,161 @@ const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
     return PROJECTS.find((val) => val.id === parseInt(projectId));
   }, [projectId]);
 
+  const locationAuthPath = () => {
+    //will be removed
+    if (location.pathname === ROUTES.user.SAML) {
+      return true;
+    } else if (location.pathname === ROUTES.user.LOGIN) {
+      return true;
+    } else if (location.pathname === ROUTES.user.POLICY) {
+      return true;
+    } else if (location.pathname === ROUTES.user.TERMS) {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <HeaderContainer>
-      <UserContainer>
-        <Box
-          sx={{
-            display: 'flex',
-            gap: '8px',
-            alignItems: 'center',
-          }}
-        >
-          <UserAvatar>{UserProps.name.charAt(0)}</UserAvatar>
-          {matches ? (
-            <Typography
-              sx={{
-                fontSize: 14,
-              }}
-            >
-              {UserProps.name}
-            </Typography>
-          ) : null}
-        </Box>
-        <IconButton
-          icontype="icon"
-          icon={isOpen ? faAngleUp : faAngleDown}
-          onClick={onClick}
-        />
-      </UserContainer>
-      <ToolBarContainer>
-        <Box
-          component={'div'}
-          sx={{
-            display: 'flex',
-            gap: '32px',
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            component={'div'}
-            sx={{
-              display: 'flex',
-              gap: '24px',
-              alignItems: 'center',
-            }}
-          >
-            <IconButton
-              icontype="icon"
-              icon={faAngleLeft}
-              disabled={!isNavigateBack}
-              onClick={() => navigate(-1)}
-            />
-            <IconButton
-              icontype="icon"
-              icon={faAngleRight}
-              disabled={!isNavigateForward}
-              onClick={() => navigate(1)}
-            />
-          </Box>
-          {projectDetails ? (
+      {!locationAuthPath() ? (
+        <>
+          <UserContainer>
             <Box
               sx={{
                 display: 'flex',
                 gap: '8px',
+                alignItems: 'center',
               }}
             >
-              <img
-                src={ProjectIcon}
-                style={{ width: 20 }}
-                alt="Project Icon"
-              />
-              <Typography
+              <UserAvatar>{UserProps.name.charAt(0)}</UserAvatar>
+              {isDesktop ? (
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                  }}
+                >
+                  {UserProps.name}
+                </Typography>
+              ) : null}
+            </Box>
+            <IconButton
+              icontype="icon"
+              icon={isOpen ? faAngleUp : faAngleDown}
+              onClick={onClick}
+            />
+          </UserContainer>
+          <ToolBarContainer>
+            <ToolBarInnerContainer>
+              <Box
+                component={'div'}
                 sx={{
-                  fontSize: 16,
-                  fontWeight: 600,
+                  display: 'flex',
+                  gap: '24px',
+                  alignItems: 'center',
                 }}
               >
-                {projectDetails.name}
-              </Typography>
+                <IconButton
+                  icontype="icon"
+                  icon={faAngleLeft}
+                  disabled={!isNavigateBack}
+                  onClick={() => navigate(-1)}
+                />
+                <IconButton
+                  icontype="icon"
+                  icon={faAngleRight}
+                  disabled={!isNavigateForward}
+                  onClick={() => navigate(1)}
+                />
+              </Box>
+              {isDesktop && projectDetails ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: '8px',
+                  }}
+                >
+                  <img
+                    src={ProjectIcon}
+                    style={{ width: 20 }}
+                    alt="Project Icon"
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {projectDetails.name}
+                  </Typography>
+                </Box>
+              ) : null}
+            </ToolBarInnerContainer>
+            {isMobile ? (
+              projectDetails ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: '8px',
+                  }}
+                >
+                  <img
+                    src={ProjectIcon}
+                    style={{ width: 20 }}
+                    alt="Project Icon"
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {projectDetails.name}
+                  </Typography>
+                </Box>
+              ) : (
+                <Logo />
+              )
+            ) : (
+              <Logo />
+            )}
+          </ToolBarContainer>
+        </>
+      ) : (
+        <SimpleContainer>
+          {location.pathname === ROUTES.user.SAML ? (
+            <Box
+              sx={{
+                width: '70px',
+              }}
+            >
+              <IconButton
+                icontype="icon"
+                icon={faAngleLeft}
+                disabled={!isNavigateBack}
+                onClick={() => navigate(-1)}
+              />
             </Box>
-          ) : null}
-        </Box>
-        <Logo />
-      </ToolBarContainer>
+          ) : (
+            <Box
+              sx={{
+                width: '70px',
+              }}
+            ></Box>
+          )}
+
+          <Logo />
+          <Typography
+            sx={{
+              fontSize: 14,
+              fontWeight: 400,
+              color: theme.palette.primary.main,
+            }}
+          >
+            Sign in
+          </Typography>
+        </SimpleContainer>
+      )}
     </HeaderContainer>
   );
 };

@@ -1,14 +1,27 @@
 // Import libraries
-import { styled, type BoxProps } from '@mui/material';
+import {
+  styled,
+  Typography,
+  type BoxProps,
+  type TypographyProps,
+} from '@mui/material';
 
 type SectionContainerProps = {
-  taskBar: boolean;
+  taskBar?: boolean;
+  sideBar?: boolean;
 } & BoxProps;
 
 export const SectionContainer = styled('div')<SectionContainerProps>(
-  ({ theme, taskBar }) => ({
+  ({ theme, taskBar, sideBar }) => ({
     position: 'relative',
-    width: !taskBar ? '1000px' : 'calc(100vw - 368px)',
+    width:
+      sideBar && !taskBar
+        ? 'calc(100vw - 272px)'
+        : !sideBar && taskBar
+          ? 'calc(100vw - 360px)'
+          : sideBar && taskBar
+            ? 'calc(100vw - 568px)'
+            : '1000px',
     margin: !taskBar ? '0 auto' : 0,
     height: 'calc(100vh - 74px)',
     display: 'flex',
@@ -44,3 +57,8 @@ export const ChatContainer = styled('div')<SectionContainerProps>(
     },
   })
 );
+
+export const Title = styled(Typography)<TypographyProps>(() => ({
+  fontSize: '14px',
+  fontWeight: 600,
+}));

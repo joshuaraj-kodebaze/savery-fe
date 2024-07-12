@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheck,
   faExclamationCircle,
+  faChevronDown,
 } from '@fortawesome/pro-regular-svg-icons';
 
 // Import components
@@ -80,7 +81,7 @@ const AgentTasks = [dummyTasks1, dummyTasks2, dummyTasks3];
 
 const TaskBar = (props: DrawerProps) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -116,7 +117,7 @@ const TaskBar = (props: DrawerProps) => {
   return (
     <TaskbarContainer
       variant="persistent"
-      anchor={matches ? 'bottom' : 'right'}
+      anchor={isMobile ? 'bottom' : 'right'}
       {...props}
     >
       <Box
@@ -128,7 +129,24 @@ const TaskBar = (props: DrawerProps) => {
           padding: '16px',
         }}
       >
-        <Title>Tasks</Title>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '8px',
+            alignItems: 'center',
+          }}
+          //@ts-ignore
+          onClick={() => props?.onClose()}
+        >
+          <Title>Tasks</Title>
+          {isMobile && (
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              style={{ fontSize: 12, strokeWidth: '1.5px' }}
+            />
+          )}
+        </Box>
         <Button
           variant="contained"
           style={{
@@ -146,8 +164,8 @@ const TaskBar = (props: DrawerProps) => {
           padding: '16px',
         }}
       >
-        {AgentTasks.map((agentTask) => (
-          <>
+        {AgentTasks.map((agentTask, index) => (
+          <Box key={`agent-${index}`}>
             <Box
               sx={{
                 display: 'flex',
@@ -182,7 +200,7 @@ const TaskBar = (props: DrawerProps) => {
               }}
             >
               {agentTask.task.map((item, index) => (
-                <>
+                <Box key={`task-${index}`}>
                   {index === 0 ? (
                     <MainTaskName>{item.taskName}</MainTaskName>
                   ) : (
@@ -203,7 +221,7 @@ const TaskBar = (props: DrawerProps) => {
                       sx={{ marginTop: '5px', marginBottom: '5px' }}
                     />
                   )}
-                </>
+                </Box>
               ))}
             </Box>
 
@@ -212,7 +230,7 @@ const TaskBar = (props: DrawerProps) => {
                 margin: '15px -20px',
               }}
             />
-          </>
+          </Box>
         ))}
       </Box>
     </TaskbarContainer>

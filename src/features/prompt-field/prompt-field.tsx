@@ -1,5 +1,6 @@
 // Import libraries
 import { useState, useRef, useEffect } from 'react';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 // Import components
 import {
@@ -24,8 +25,10 @@ const PromptField = ({
   onButtonClick = () => {},
 }: PromptFieldProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [width, setWidth] = useState(50);
+  const [width, setWidth] = useState(isMobile ? 25 : 50);
   const [description, setDescription] = useState<string>('');
   const [isMultiLine, setIsMultiLine] = useState(false);
   const [initialWidth, setInitialWidth] = useState(0);
@@ -41,7 +44,7 @@ const PromptField = ({
 
   useEffect(() => {
     if (!textAreaRef.current?.offsetWidth) return;
-    const val = width * 6.5;
+    const val = width * (isMobile ? 7 : 6.5);
 
     if (isMultiLine && val < initialWidth) {
       setIsMultiLine(false);
@@ -52,7 +55,7 @@ const PromptField = ({
       setInitialWidth(textAreaRef.current?.offsetWidth);
       setIsMultiLine(true);
     }
-  }, [width, textAreaRef, isMultiLine, initialWidth]);
+  }, [width, textAreaRef, isMultiLine, initialWidth, isMobile]);
 
   return (
     <PromptInputContainer

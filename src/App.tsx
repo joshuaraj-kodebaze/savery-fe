@@ -40,18 +40,18 @@ function App() {
             path={ROUTES.projects.RECENT_PROJECTS}
             element={<Recent />}
           />
-        </Route>
-        <Route element={<MinimalLayout />}>
           <Route
             path={`${ROUTES.projects.PROJECT}/:projectId`}
             element={<Agent />}
           />
         </Route>
+        <Route element={<MinimalLayout />}>
+          <Route path={ROUTES.user.LOGIN} element={<Login />} />
+          <Route path={ROUTES.user.SAML} element={<Saml />} />
+          <Route path={ROUTES.user.POLICY} element={<Policy />} />
+          <Route path={ROUTES.user.TERMS} element={<Terms />} />
+        </Route>
       </Route>
-      <Route path={ROUTES.user.LOGIN} element={<Login />} />
-      <Route path={ROUTES.user.SAML} element={<Saml />} />
-      <Route path={ROUTES.user.POLICY} element={<Policy />} />
-      <Route path={ROUTES.user.TERMS} element={<Terms />} />
     </Routes>
   );
 }

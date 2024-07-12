@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 // Import components
 import {
@@ -6,6 +6,7 @@ import {
   Container,
   SamlButtonContainer,
 } from './saml.styles';
+import TextInput from 'components/text-input/text-input';
 
 const Saml = () => {
   return (
@@ -19,7 +20,9 @@ const Saml = () => {
       >
         Create your free account
       </Typography>
-
+      <Box sx={{ width: 327 }}>
+        <TextInput label={'Organization ID'} placeholder={``} />
+      </Box>
       <ContactContainer>
         Contact your admin to get your Organization ID
       </ContactContainer>

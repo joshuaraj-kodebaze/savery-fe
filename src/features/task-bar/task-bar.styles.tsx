@@ -24,7 +24,7 @@ export const TaskbarContainer = styled(Drawer)<DrawerProps>(
 );
 
 export const Title = styled(Typography)<TypographyProps>(() => ({
-  fontSize: '12px',
+  fontSize: '14px',
   fontWeight: 600,
 }));
 

@@ -23,6 +23,9 @@ export const Card = styled('div')<BoxProps>(({ theme }) => ({
   // '&:hover': {
   //   borderColor: COLORS.mildGrey,
   // },
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(50% - 8px)',
+  },
 }));
 
 export const Title = styled(Typography)<TypographyProps>(() => ({
