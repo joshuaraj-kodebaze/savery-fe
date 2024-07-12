@@ -21,7 +21,7 @@ export const SectionContainer = styled('div')<SectionContainerProps>(
           ? 'calc(100vw - 360px)'
           : sideBar && taskBar
             ? 'calc(100vw - 568px)'
-            : '1000px',
+            : 'calc(100vw - 380px)',
     margin: !taskBar ? '0 auto' : 0,
     height: 'calc(100vh - 74px)',
     display: 'flex',
