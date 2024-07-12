@@ -35,11 +35,11 @@ const UserProps = {
 };
 
 type TopBarProps = {
-  isOpen: boolean;
-  onClick: () => void;
+  isOpen?: boolean;
+  onClick?: () => void;
 };
 
-const TopBar = ({ isOpen, onClick }: TopBarProps) => {
+const TopBar = ({ isOpen = false, onClick }: TopBarProps) => {
   const { projectId } = useParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));

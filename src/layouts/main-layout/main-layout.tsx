@@ -1,6 +1,7 @@
 // Import libraries
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 // Import features
 import TopBar from 'features/top-bar/top-bar';
@@ -10,7 +11,14 @@ import SideBar from 'features/side-bar/side-bar';
 import { LayoutContainer } from './main-layout.styles';
 
 const MainLayout = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    if (matches) return setIsSidebarOpen(false);
+    else setIsSidebarOpen(true);
+  }, [matches]);
 
   const handleClick = () => {
     setIsSidebarOpen((prevState) => !prevState);

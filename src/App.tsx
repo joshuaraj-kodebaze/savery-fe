@@ -17,6 +17,9 @@ import ErrorPage from 'pages/error-page/error-page';
 import Recent from 'pages/recent/recent';
 import Agent from 'pages/agent/agent';
 
+// Import hoc
+import ProtectedRoute from 'hoc/protected-routes/protected-routes';
+
 // Import utils
 import { ROUTES } from 'utils/constants';
 
@@ -25,20 +28,25 @@ function App() {
     <Routes>
       <Route path="404" element={<ErrorPage />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<AllProjects />} />
-        <Route path={ROUTES.settings.GENERAL} element={<General />} />
-        <Route path={ROUTES.settings.PLANS} element={<Plans />} />
-        <Route
-          path={ROUTES.projects.RECENT_PROJECTS}
-          element={<Recent />}
-        />
-      </Route>
-      <Route element={<MinimalLayout />}>
-        <Route
-          path={`${ROUTES.projects.PROJECT}/:projectId`}
-          element={<Agent />}
-        />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<AllProjects />} />
+          <Route
+            path={ROUTES.settings.GENERAL}
+            element={<General />}
+          />
+          <Route path={ROUTES.settings.PLANS} element={<Plans />} />
+          <Route
+            path={ROUTES.projects.RECENT_PROJECTS}
+            element={<Recent />}
+          />
+        </Route>
+        <Route element={<MinimalLayout />}>
+          <Route
+            path={`${ROUTES.projects.PROJECT}/:projectId`}
+            element={<Agent />}
+          />
+        </Route>
       </Route>
       <Route path={ROUTES.user.LOGIN} element={<Login />} />
       <Route path={ROUTES.user.SAML} element={<Saml />} />

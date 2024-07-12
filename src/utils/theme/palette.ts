@@ -1,38 +1,31 @@
-const white = '#FFFFFF';
-const black = '#000000';
-const darkBlue = '#152023';
-const lightGray = '#767676';
-const mediumGray = '#D1D1D1';
-const midGray = '#fbfbfb';
-const slightDarkGray = '#EBEBEB';
-const purple = '#CC00FF';
-const darkPurple = '#B505E1';
+// Import utils
+import { COLORS } from "utils/colors";
 
 export default {
     common: {
-        white,
-        black,
+        white: COLORS.white,
+        black: COLORS.black,
     },
     primary: {
-        main: purple,
-        dark: darkPurple
+        main: COLORS.purple,
+        dark: COLORS.darkPurple
     },
     text: {
-        primary: darkBlue,
-        secondary: lightGray,
-        disabled: mediumGray,
+        primary: COLORS.darkBlue,
+        secondary: COLORS.lightGray,
+        disabled: COLORS.mediumGray,
     },
-    divider: slightDarkGray,
+    divider: COLORS.slightDarkGray,
     background: {
-        paper: white,
-        default: midGray,
+        paper: COLORS.white,
+        default: COLORS.midGray,
     },
     action: {
-        active: darkPurple,
-        hover: darkPurple,
-        selected: darkPurple,
-        disabled: mediumGray,
-        disabledBackground: mediumGray,
-        focus: darkPurple
+        active: COLORS.darkPurple,
+        hover: COLORS.darkPurple,
+        selected: COLORS.darkPurple,
+        disabled: COLORS.mediumGray,
+        disabledBackground: COLORS.mediumGray,
+        focus: COLORS.darkPurple
     }
 };

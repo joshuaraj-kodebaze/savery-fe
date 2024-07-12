@@ -19,3 +19,25 @@ body {
   border-radius: 20px; /* roundness of the scroll thumb */
   border: 2px solid #f1f1f1; /* creates padding around scroll thumb */
 }
+
+/* .spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+/* .dotted-spinner {
+  font-size: 12px; 
+  animation: spin 2s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
