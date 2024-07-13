@@ -2,7 +2,7 @@ import MicrosoftIcon from '../../assets/icons/microsoft-icon.svg';
 import GoogleIcon from '../../assets/icons/google-icon.svg';
 import GithubIcon from '../../assets/icons/github-icon.svg';
 import Divider from '@mui/material/Divider';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Typography, useTheme } from '@mui/material';
 
 // Import components
@@ -20,20 +20,21 @@ interface LoginButtonProps {
   text: string;
 }
 
+const LoginButton = ({ icon, text }: LoginButtonProps) => {
+  return (
+    <ButtonContainer
+      onClick={() => console.log(`${text} button clicked`)}
+    >
+      <img src={icon} style={{ height: 16, width: 16 }} />
+      <ButtonText>{text}</ButtonText>
+    </ButtonContainer>
+  );
+};
+
 const Login = () => {
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const LoginButton = ({ icon, text }: LoginButtonProps) => {
-    return (
-      <ButtonContainer
-        onClick={() => console.log(`${text} button clicked`)}
-      >
-        <img src={icon} style={{ height: 16, width: 16 }} />
-        <ButtonText>{text}</ButtonText>
-      </ButtonContainer>
-    );
-  };
   return (
     <Container>
       <Typography
@@ -54,8 +55,8 @@ const Login = () => {
 
       <TermsTextContainer>
         By clicking continue, you agree to our
-        <a
-          href="/terms"
+        <Link
+          to="/terms"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -65,10 +66,10 @@ const Login = () => {
         >
           {' '}
           Terms of Service{' '}
-        </a>
+        </Link>
         and
-        <a
-          href="/policy"
+        <Link
+          to="/policy"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -78,7 +79,7 @@ const Login = () => {
         >
           {' '}
           Privacy Policy{' '}
-        </a>
+        </Link>
       </TermsTextContainer>
 
       <ContinueText>

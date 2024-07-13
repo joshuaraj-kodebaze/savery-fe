@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     loading: false,
-    userInfo: {}, // for user object
-    userToken: null, // for storing the JWT
+    userInfo: {},
+    userToken: null,
     error: null,
-    success: false, // for monitoring the registration process.
+    success: false,
 }
 
 const authSlice = createSlice({

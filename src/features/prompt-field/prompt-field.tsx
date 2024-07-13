@@ -68,7 +68,6 @@ const PromptField = ({
         value={description}
         onChange={changeHandler}
         rows={1}
-        autoFocus
         isMultiLine={isMultiLine}
       />
       <Button

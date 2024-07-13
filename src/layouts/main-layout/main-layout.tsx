@@ -28,21 +28,22 @@ const MainLayout = () => {
 
   const { isSidebarOpen } = useAppSelector((state) => state.user);
 
-  useEffect(() => {
-    if (isMobile) {
-      dispatch(toggleSideBar());
-    }
-  }, [isMobile, dispatch]);
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     dispatch(toggleSideBar());
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (
+      !isMobile &&
       isSidebarOpen &&
       location.pathname.includes(ROUTES.projects.PROJECT)
     ) {
       dispatch(toggleSideBar());
     }
-
     if (
+      !isMobile &&
       !isSidebarOpen &&
       !location.pathname.includes(ROUTES.projects.PROJECT)
     ) {
@@ -51,6 +52,8 @@ const MainLayout = () => {
   }, [location, dispatch]);
 
   const handleClick = () => dispatch(toggleSideBar());
+
+  console.log('isSidebarOpen ->', isSidebarOpen);
 
   return (
     <>

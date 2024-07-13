@@ -1,6 +1,9 @@
 // Import libraries
-import { Box, Divider } from '@mui/material';
-import { faArrowUpRight } from '@fortawesome/pro-regular-svg-icons';
+import { Box, Divider, Typography } from '@mui/material';
+import {
+  faArrowUpRight,
+  faRightFromBracket,
+} from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -132,6 +135,23 @@ const SideBar = ({ isOpen, handleClose }: SideBarProps) => {
               ));
             }
           })}
+          <Divider />
+          <Box
+            sx={{
+              padding: '0px 24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              cursor: 'pointer',
+            }}
+            onClick={() => console.log('Logout')}
+          >
+            <Typography sx={{ fontSize: '14px' }}>Logout</Typography>
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
+              style={{ fontSize: 10 }}
+            />
+          </Box>
         </Box>
       </SideBarInnerContainer>
     </SideBarContainer>
