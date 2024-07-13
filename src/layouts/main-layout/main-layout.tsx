@@ -28,12 +28,6 @@ const MainLayout = () => {
 
   const { isSidebarOpen } = useAppSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   if (isMobile) {
-  //     dispatch(toggleSideBar());
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (
       !isMobile &&
@@ -53,15 +47,18 @@ const MainLayout = () => {
 
   const handleClick = () => dispatch(toggleSideBar());
 
-  console.log('isSidebarOpen ->', isSidebarOpen);
-
   return (
     <>
       <TopBar isOpen={isSidebarOpen} onClick={handleClick} />
-      <SideBar
-        isOpen={isSidebarOpen}
-        handleClose={() => isMobile && handleClick()}
-      />
+      {isMobile ? (
+        <SideBar
+          isOpen={!isSidebarOpen}
+          handleClose={() => handleClick()}
+        />
+      ) : (
+        <SideBar isOpen={isSidebarOpen} />
+      )}
+
       <LayoutContainer isOpen={isSidebarOpen}>
         <Outlet />
       </LayoutContainer>
